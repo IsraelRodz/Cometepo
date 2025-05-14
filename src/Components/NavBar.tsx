@@ -1,5 +1,4 @@
 // src/components/Navbar.tsx
-
 import { useState } from 'react';
 import {
   FaUserFriends,
