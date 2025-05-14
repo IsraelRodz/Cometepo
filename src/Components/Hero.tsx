@@ -51,7 +51,7 @@ const Hero = () => {
         className="relative z-10 mt-10 md:mt-0 md:w-1/2 flex justify-start items-center md:pl-10"
       >
         <img
-          src="/public/cometepo.svg.jpeg"
+          src="/public/Laboratorios/cometepo.svg.jpeg"
           alt="Logo de la empresa"
           className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg aspect-square rounded-full object-contain border-4 border-white shadow-2xl"
         />
