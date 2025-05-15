@@ -43,7 +43,8 @@ const Contacto = () => {
 
         {/* Lado derecho - Redes sociales */}
         <div className="flex-1 text-center">
-          <p className="text-gray-700 mb-8 text-lg max-w-md mx-auto text-justify max-[400px]:text-base max-[400px]:px-2">
+          <p className="text-gray-700 mb-8 text-lg max-w-md mx-auto text-justify leading-relaxed
+            max-[400px]:text-sm max-[400px]:leading-tight max-[400px]:max-w-xs max-[400px]:px-2">
             Estamos disponibles en nuestras redes sociales para resolver tus dudas y brindarte una mejor atención.
           </p>
 
