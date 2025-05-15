@@ -30,7 +30,7 @@ const Navbar = () => {
           className="text-2xl md:text-3xl font-extrabold tracking-wide cursor-pointer transition-transform hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 flex items-center gap-3"
         >
           <img
-            src="/public/Laboratorios/cometepo.svg.jpeg"
+            src="/public/Laboratorios/COMEjpeg"
             alt="Logo"
             className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover border-2 border-blue-300 shadow-lg transition-transform duration-300 hover:scale-110 dark:border-cyan-400"
           />
