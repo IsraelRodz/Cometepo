@@ -17,12 +17,8 @@ const Contacto = () => {
       className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-2xl py-16 px-6 md:px-20 shadow-lg max-[400px]:px-4"
     >
       <h2
-        className="text-5xl font-extrabold text-blue-700 mb-10 font-serif tracking-wide text-center
-          max-[400px]:text-2xl
-          max-[400px]:leading-snug
-          max-[400px]:tracking-normal
-          max-[400px]:mb-6
-        "
+        className="text-5xl font-extrabold text-blue-700 mb-10 font-serif tracking-wide text-center break-words
+        max-[400px]:text-xl max-[400px]:leading-snug max-[400px]:mb-6 max-[400px]:max-w-xs mx-auto"
       >
         Contáctanos
       </h2>
