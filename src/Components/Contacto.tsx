@@ -16,7 +16,14 @@ const Contacto = () => {
       id="contacto"
       className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-2xl py-16 px-6 md:px-20 shadow-lg max-[400px]:px-4"
     >
-      <h2 className="text-5xl font-extrabold text-blue-700 mb-10 font-serif tracking-wide text-center max-[400px]:text-3xl max-[400px]:leading-tight">
+      <h2
+        className="text-5xl font-extrabold text-blue-700 mb-10 font-serif tracking-wide text-center
+          max-[400px]:text-2xl
+          max-[400px]:leading-snug
+          max-[400px]:tracking-normal
+          max-[400px]:mb-6
+        "
+      >
         Contáctanos
       </h2>
 
@@ -32,7 +39,7 @@ const Contacto = () => {
           </div>
           <div className="flex items-start gap-4 max-[400px]:flex-col max-[400px]:items-start max-[400px]:gap-1">
             <FontAwesomeIcon icon={faEnvelope} className="text-2xl text-red-600 max-[400px]:text-xl" />
-            <span className="break-words text-sm max-[400px]:text-xs">
+            <span className="break-all text-sm leading-snug max-[400px]:text-xs max-[400px]:max-w-[250px]">
               cotizaciones@comercializadoramedicamentostepotzotlan.mx
             </span>
           </div>
