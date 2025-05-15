@@ -5,17 +5,17 @@ export default function Servicios() {
       {
         titulo: 'Distribución nacional',
         descripcion: 'Servicio de distribución nacional garantizando calidad, seguridad y puntualidad.',
-        imagen: '/public/Servicios/DISTRIBUCION_NACIONAL.jpg', // Asegúrate de tener esta imagen en public/assets/
+        imagen: '/Servicios/DISTRIBUCION_NACIONAL.jpg', // Asegúrate de tener esta imagen en public/assets/
       },
       {
         titulo: 'Almacenamiento especializado',
         descripcion: 'Servicio de almacenamiento especializado garantizando calidad, seguridad y puntualidad.',
-        imagen: '/public/Servicios/ALMACENAMIENTO.jpg',
+        imagen: '/Servicios/ALMACENAMIENTO.jpg',
       },
       {
         titulo: 'Atención personalizada',
         descripcion: 'Servicio de atención personalizada garantizando calidad, seguridad y puntualidad.',
-        imagen: '/public/Servicios/CALL.jpg',
+        imagen: '/Servicios/CALL.jpg',
       },
     ];
   

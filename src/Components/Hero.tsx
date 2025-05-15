@@ -49,7 +49,7 @@ const Hero = () => {
         className="relative z-10 mt-10 md:mt-0 w-full md:w-1/2 flex justify-center md:justify-start items-center md:pl-10"
       >
         <img
-          src="/public/Laboratorios/COME.jpeg"
+          src="/Laboratorios/COME.jpeg"
           alt="Logo de la empresa"
           className="w-48 max-[400px]:w-36 md:w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg aspect-square rounded-full object-contain border-4 border-white shadow-2xl"
         />
