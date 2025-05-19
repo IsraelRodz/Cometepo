@@ -71,7 +71,7 @@ const Contacto = () => {
               rel="noopener noreferrer"
               className="text-pink-600 hover:text-pink-800 transition-transform duration-300 ease-in-out transform hover:scale-125"
             >
-              <FontAwesomeIcon icon={faInstagram} />
+              <FontAwesomeIcon icon={faInstagram}/>
             </a>
             <a
               href="https://www.linkedin.com"
@@ -79,7 +79,7 @@ const Contacto = () => {
               rel="noopener noreferrer"
               className="text-blue-500 hover:text-blue-700 transition-transform duration-300 ease-in-out transform hover:scale-125"
             >
-              <FontAwesomeIcon icon={faLinkedin} />
+              <FontAwesomeIcon icon={faLinkedin}/>
             </a>
             <a
               href="tel:+525630847160"
