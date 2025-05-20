@@ -7,19 +7,19 @@ export default function Servicios() {
     {
       titulo: 'Distribución nacional',
       descripcion:
-        'Ofrecemos un servicio de distribución a nivel nacional, respaldado por una infraestructura eficiente y un equipo altamente capacitado, lo que nos permite garantizar los más altos estándares de calidad, seguridad y puntualidad. Nuestro compromiso es brindar soluciones logísticas confiables, adaptadas a las necesidades de cada cliente, optimizando tiempos de entrega y asegurando la integridad de cada envío durante todo el proceso. Nos posicionamos como un aliado estratégico para su empresa, impulsando su crecimiento a través de una cadena de suministro robusta y eficiente.',
+        'Ofrecemos un servicio de distribución farmacéutica a nivel nacional, asegurando la entrega segura y puntual de medicamentos y productos sanitarios. Contamos con una infraestructura especializada y un equipo altamente capacitado para manejar productos sensibles bajo estrictas normas de calidad y seguridad, garantizando la integridad y conservación de cada envío desde su origen hasta su destino.',
       imagen: '/Servicios/DISTRIBUCION_1.jpg',
     },
     {
       titulo: 'Almacenamiento especializado',
       descripcion:
-        'Brindamos un servicio de almacenamiento especializado, diseñado para satisfacer las exigencias de diferentes sectores, garantizando altos estándares de calidad, seguridad y puntualidad. Contamos con instalaciones modernas, sistemas de control avanzados y personal capacitado que aseguran la conservación, trazabilidad y disponibilidad oportuna de su mercancía. Nuestro enfoque está orientado a ofrecer soluciones logísticas integrales, adaptadas a las necesidades específicas de cada cliente, con el objetivo de optimizar sus procesos operativos y fortalecer su cadena de suministro.',
+        'Brindamos almacenamiento especializado para productos farmacéuticos, cumpliendo con las normativas vigentes en materia de conservación y control de temperatura. Nuestras instalaciones están equipadas con tecnología avanzada para garantizar la trazabilidad, seguridad y calidad de los medicamentos, asegurando su óptimo estado hasta el momento de la distribución.',
       imagen: '/Servicios/ALMACENAMIENTO_1.jpg',
     },
     {
       titulo: 'Atención personalizada',
       descripcion:
-        'Ofrecemos un servicio de atención personalizada, orientado a brindar una experiencia excepcional a cada cliente, garantizando altos estándares de calidad, seguridad y puntualidad. Nuestro equipo está comprometido con comprender las necesidades específicas de cada usuario, proporcionando soluciones ágiles, cercanas y eficaces. A través de una comunicación clara y un acompañamiento constante, buscamos construir relaciones de confianza y largo plazo, aportando valor en cada interacción.',
+        'Ofrecemos atención personalizada a nuestros clientes del sector farmacéutico, con un equipo experto dedicado a entender sus necesidades específicas. Proporcionamos soluciones logísticas integrales, asesoramiento técnico y un acompañamiento continuo para asegurar la máxima satisfacción y cumplimiento normativo en cada operación.',
       imagen: '/Servicios/CALL.jpg',
     },
   ];
@@ -36,7 +36,6 @@ export default function Servicios() {
       <div className="grid md:grid-cols-3 gap-10">
         {servicios.map((servicio, idx) => {
           const isExpanded = expanded === idx;
-          const descripcionCorta = servicio.descripcion.slice(0, 180) + '...';
 
           return (
             <div
@@ -50,12 +49,18 @@ export default function Servicios() {
               />
               <div className="p-6 text-left">
                 <h3 className="text-xl font-bold text-blue-600 mb-3 text-center">{servicio.titulo}</h3>
-                <p className="text-gray-700 text-base text-justify">
-                  {isExpanded ? servicio.descripcion : descripcionCorta}
+                <p
+                  className={`text-gray-700 text-base text-justify transition-all duration-300 ease-in-out
+                    ${!isExpanded ? 'line-clamp-4' : ''}`}
+                  style={{ whiteSpace: 'pre-line' }}
+                >
+                  {servicio.descripcion}
                 </p>
                 <button
                   onClick={() => toggleExpand(idx)}
                   className="mt-3 text-sm text-blue-600 hover:underline"
+                  aria-expanded={isExpanded}
+                  aria-controls={`descripcion-${idx}`}
                 >
                   {isExpanded ? 'Leer menos' : 'Leer más'}
                 </button>
