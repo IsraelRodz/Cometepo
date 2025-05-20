@@ -4,17 +4,17 @@ export default function Servicios() {
     const servicios = [
       {
         titulo: 'Distribución nacional',
-        descripcion: 'Servicio de distribución nacional garantizando calidad, seguridad y puntualidad.',
+        descripcion: 'Ofrecemos un servicio de distribución a nivel nacional, respaldado por una infraestructura eficiente y un equipo altamente capacitado, lo que nos permite garantizar los más altos estándares de calidad, seguridad y puntualidad. Nuestro compromiso es brindar soluciones logísticas confiables, adaptadas a las necesidades de cada cliente, optimizando tiempos de entrega y asegurando la integridad de cada envío durante todo el proceso. Nos posicionamos como un aliado estratégico para su empresa, impulsando su crecimiento a través de una cadena de suministro robusta y eficiente.',
         imagen: '/Servicios/DISTRIBUCION_1.jpg', // Asegúrate de tener esta imagen en public/assets/
       },
       {
         titulo: 'Almacenamiento especializado',
-        descripcion: 'Servicio de almacenamiento especializado garantizando calidad, seguridad y puntualidad.',
+        descripcion: 'Brindamos un servicio de almacenamiento especializado, diseñado para satisfacer las exigencias de diferentes sectores, garantizando altos estándares de calidad, seguridad y puntualidad. Contamos con instalaciones modernas, sistemas de control avanzados y personal capacitado que aseguran la conservación, trazabilidad y disponibilidad oportuna de su mercancía. Nuestro enfoque está orientado a ofrecer soluciones logísticas integrales, adaptadas a las necesidades específicas de cada cliente, con el objetivo de optimizar sus procesos operativos y fortalecer su cadena de suministro.',
         imagen: '/Servicios/ALMACENAMIENTO_1.jpg',
       },
       {
         titulo: 'Atención personalizada',
-        descripcion: 'Servicio de atención personalizada garantizando calidad, seguridad y puntualidad.',
+        descripcion: 'Ofrecemos un servicio de atención personalizada, orientado a brindar una experiencia excepcional a cada cliente, garantizando altos estándares de calidad, seguridad y puntualidad. Nuestro equipo está comprometido con comprender las necesidades específicas de cada usuario, proporcionando soluciones ágiles, cercanas y eficaces. A través de una comunicación clara y un acompañamiento constante, buscamos construir relaciones de confianza y largo plazo, aportando valor en cada interacción',
         imagen: '/Servicios/CALL.jpg',
       },
     ];
