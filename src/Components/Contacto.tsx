@@ -82,7 +82,7 @@ const Contacto = () => {
               <FontAwesomeIcon icon={faLinkedin}/>
             </a>
             <a
-              href="tel:+5630847160"
+              href="tel:5630847160"
               className="text-green-600 hover:text-green-800 transition-transform duration-300 ease-in-out transform hover:scale-125"
             >
               <FontAwesomeIcon icon={faPhoneAlt} />
