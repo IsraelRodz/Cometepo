@@ -83,7 +83,8 @@ const Contacto = () => {
             </a>
             <a
              href="tel:+525630847160"
-              className="text-green-600 hover:text-green-800 transition-transform duration-300 ease-in-out transform hover:scale-125"
+             aria-label="Llamar al número +52 5630847160"
+            className="text-green-600 hover:text-green-800 transition-transform duration-300 ease-in-out transform hover:scale-125"
             >
               <FontAwesomeIcon icon={faPhoneAlt} />
             </a>
