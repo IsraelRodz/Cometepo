@@ -27,50 +27,54 @@ const Hero = () => {
 
       <div className="relative z-10 w-full md:w-1/2">
         <motion.h1
-          initial={{ y: -50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="text-4xl max-[400px]:text-2xl md:text-6xl font-extrabold leading-tight mb-2 whitespace-nowrap overflow-hidden"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+          className="text-4xl max-[400px]:text-2xl md:text-6xl font-extrabold leading-tight mb-3"
         >
-          <motion.span
-            className="bg-gradient-to-r from-white via-gray-300 to-white bg-clip-text text-transparent"
-            animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-            style={{ backgroundSize: '300% 300%', display: 'inline-block', whiteSpace: 'nowrap' }}
-          >
-            Comercializadora
-          </motion.span>
+          <span className="text-white">Comercializadora</span>
         </motion.h1>
 
         <motion.h2
-          initial={{ y: -30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1.5, delay: 0.3, ease: "easeOut" }}
-          className="text-4xl max-[400px]:text-2xl md:text-6xl font-extrabold leading-tight text-red-500"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1.5 }}
+          className="text-4xl max-[400px]:text-2xl md:text-6xl font-extrabold leading-tight mb-2"
         >
-          De Medicamentos
+          <span className="text-red-600">De Medicamentos</span>
         </motion.h2>
 
         <motion.h3
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1.5, delay: 0.6, ease: "easeOut" }}
-          className="text-4xl max-[400px]:text-2xl md:text-6xl font-extrabold leading-tight text-red-500 mb-6"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 2 }}
+          className="text-4xl max-[400px]:text-2xl md:text-6xl font-extrabold leading-tight mb-6"
         >
-          Tepotzotlán
+          <span className="text-red-600">Tepotzotlán</span>
         </motion.h3>
 
-        <p className="mt-4 text-lg max-[400px]:text-base md:text-2xl leading-relaxed max-w-xl mx-auto text-justify">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 2.5 }}
+          className="mt-4 text-lg max-[400px]:text-base md:text-2xl leading-relaxed max-w-xl mx-auto text-justify"
+        >
           Medicamentos al alcance de todos con distribución eficiente.
-        </p>
-        <div className="mt-8">
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 2.8 }}
+          className="mt-8"
+        >
           <a
             href="#contacto"
             className="inline-block bg-white text-blue-700 font-semibold py-3 px-6 max-[400px]:py-2 max-[400px]:px-4 max-[400px]:text-base rounded-full text-lg shadow-md transition-transform duration-300 hover:scale-110 hover:bg-blue-100"
           >
             Contáctanos
           </a>
-        </div>
+        </motion.div>
       </div>
 
       <motion.div
