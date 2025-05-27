@@ -16,15 +16,11 @@ const Contacto = () => {
       id="contacto"
       className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-2xl py-16 px-6 md:px-20 shadow-lg max-[400px]:px-4"
     >
-      <h2
-        className="text-5xl font-extrabold text-blue-700 mb-10 font-serif tracking-wide text-center break-words leading-tight
-                  max-w-[95%] mx-auto
+     <h2
+        className="text-5xl font-extrabold text-blue-700 mb-10 font-serif tracking-wide text-center whitespace-nowrap leading-tight
+                  max-w-full mx-auto
                   sm:text-4xl
-                  max-[400px]:text-2xl 
-                  max-[400px]:leading-snug 
-                  max-[400px]:mb-6 
-                  max-[400px]:break-words 
-                  max-[400px]:whitespace-normal"
+                  max-[300px]:text-xl max-[300px]:leading-snug max-[300px]:mb-6"
       >
         Contáctanos
       </h2>
