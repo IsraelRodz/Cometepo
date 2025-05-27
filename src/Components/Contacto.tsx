@@ -20,7 +20,7 @@ const Contacto = () => {
         className="text-5xl font-extrabold text-blue-700 mb-10 font-serif tracking-wide text-center whitespace-nowrap leading-tight
                   max-w-full mx-auto
                   sm:text-4xl
-                  max-[300px]:text-xl max-[300px]:leading-snug max-[300px]:mb-6"
+                  max-[400px]:text-2xl max-[400px]:leading-tight max-[400px]:mb-6"
       >
         Contáctanos
       </h2>
