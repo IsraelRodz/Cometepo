@@ -26,9 +26,40 @@ const Hero = () => {
       <div className="absolute inset-0 bg-blue-500 bg-opacity-50 z-0"></div>
 
       <div className="relative z-10 w-full md:w-1/2">
-        <h1 className="text-4xl max-[400px]:text-2xl md:text-6xl font-extrabold leading-tight mb-6 transition-transform duration-300 hover:scale-105">
-          Comercializadora De Medicamentos Tepotzotlan
-        </h1>
+        <motion.h1
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="text-4xl max-[400px]:text-2xl md:text-6xl font-extrabold leading-tight mb-2 whitespace-nowrap overflow-hidden"
+        >
+          <motion.span
+            className="bg-gradient-to-r from-white via-gray-300 to-white bg-clip-text text-transparent"
+            animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+            style={{ backgroundSize: '300% 300%', display: 'inline-block', whiteSpace: 'nowrap' }}
+          >
+            Comercializadora
+          </motion.span>
+        </motion.h1>
+
+        <motion.h2
+          initial={{ y: -30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1.5, delay: 0.3, ease: "easeOut" }}
+          className="text-4xl max-[400px]:text-2xl md:text-6xl font-extrabold leading-tight text-red-500"
+        >
+          De Medicamentos
+        </motion.h2>
+
+        <motion.h3
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1.5, delay: 0.6, ease: "easeOut" }}
+          className="text-4xl max-[400px]:text-2xl md:text-6xl font-extrabold leading-tight text-red-500 mb-6"
+        >
+          Tepotzotlán
+        </motion.h3>
+
         <p className="mt-4 text-lg max-[400px]:text-base md:text-2xl leading-relaxed max-w-xl mx-auto text-justify">
           Medicamentos al alcance de todos con distribución eficiente.
         </p>
