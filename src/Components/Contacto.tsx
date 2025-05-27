@@ -19,11 +19,16 @@ const Contacto = () => {
       <h2
         className="text-5xl font-extrabold text-blue-700 mb-10 font-serif tracking-wide text-center break-words leading-tight
                   max-w-[95%] mx-auto
-                  sm:text-4xl 
-                  max-[400px]:text-2xl max-[400px]:leading-snug max-[400px]:mb-6"
+                  sm:text-4xl
+                  max-[400px]:text-2xl 
+                  max-[400px]:leading-snug 
+                  max-[400px]:mb-6 
+                  max-[400px]:break-words 
+                  max-[400px]:whitespace-normal"
       >
         Contáctanos
       </h2>
+
       <div className="flex flex-col md:flex-row gap-12">
         {/* Lado izquierdo - Información de contacto */}
         <div className="flex-1 bg-white p-8 rounded-xl shadow-lg text-blue-800 text-lg space-y-6 border border-blue-200 max-[400px]:text-base max-[400px]:p-4">
