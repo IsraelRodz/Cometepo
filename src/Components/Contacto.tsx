@@ -17,11 +17,11 @@ const Contacto = () => {
       className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-2xl py-16 px-6 md:px-20 shadow-lg max-[400px]:px-4"
     >
       <h2
-        className="text-5xl font-extrabold text-blue-700 mb-10 font-serif tracking-wide text-center break-words
-        max-[400px]:text-xl max-[400px]:leading-snug max-[400px]:mb-6 max-[400px]:max-w-xs mx-auto"
+        className="text-5xl md:text-4xl sm:text-3xl max-[400px]:text-xl font-extrabold text-blue-700 mb-10 max-[400px]:mb-6 font-serif tracking-wide text-center break-words leading-tight max-w-[90%] mx-auto"
       >
         Contáctanos
       </h2>
+
 
       <div className="flex flex-col md:flex-row gap-12">
         {/* Lado izquierdo - Información de contacto */}
