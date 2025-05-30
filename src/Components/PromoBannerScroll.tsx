@@ -23,11 +23,31 @@ export default function PromoBannerScroll() {
 
     controls.start({
       x: [0, -imageWidth],
+      scale: [1, 1.05, 1], // escala leve para "respirar"
+      filter: [
+        "brightness(1)",
+        "brightness(1.1)",
+        "brightness(1)"
+      ], // brillo suave para animar
       transition: {
-        repeat: Infinity,
-        repeatType: "loop",
-        duration: 20,
-        ease: "linear",
+        x: {
+          repeat: Infinity,
+          repeatType: "loop",
+          duration: 20,
+          ease: "easeInOut",
+        },
+        scale: {
+          repeat: Infinity,
+          repeatType: "loop",
+          duration: 20,
+          ease: "easeInOut",
+        },
+        filter: {
+          repeat: Infinity,
+          repeatType: "loop",
+          duration: 20,
+          ease: "easeInOut",
+        },
       },
     });
   }, [imageWidth, controls]);
@@ -38,7 +58,7 @@ export default function PromoBannerScroll() {
                  bg-gradient-to-r from-[#0f172a] via-[#1e293b] to-[#0f172a]"
     >
       <motion.div
-        className="flex gap-0" // sin espacio entre imágenes
+        className="flex gap-0"
         animate={controls}
         ref={containerRef}
       >
@@ -62,7 +82,7 @@ export default function PromoBannerScroll() {
           ¡Promoción por tiempo limitado, Aprovecha el Hot Sale!
         </h2>
         <p className="text-white mt-2 text-sm sm:text-lg md:text-xl drop-shadow-md max-w-3xl">
-          Hasta 30% de descuento en nuestros servicios premium.
+          Hasta 30% de descuento en nuestros productos.
         </p>
       </div>
     </div>
