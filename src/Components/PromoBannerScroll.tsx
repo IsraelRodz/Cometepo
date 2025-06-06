@@ -1,94 +1,67 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 
+const images = [
+  "/Servicios/promociones_1.jpeg",
+  "/Servicios/promociones_2.jpeg",
+  "/Servicios/promociones_3.jpeg",
+  "/Servicios/promociones_4.jpeg",
+  "/Servicios/promociones_5.jpeg",
+];
+
 export default function PromoBannerScroll() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLImageElement>(null);
+  const [totalWidth, setTotalWidth] = useState(0);
   const controls = useAnimation();
-  const [imageWidth, setImageWidth] = useState(0);
 
+  // Calcular el ancho total del slider
   useEffect(() => {
-    function updateWidth() {
-      if (imageRef.current) {
-        setImageWidth(imageRef.current.offsetWidth);
+    const updateWidth = () => {
+      if (containerRef.current) {
+        setTotalWidth(containerRef.current.scrollWidth / 2); // solo un set de imágenes
       }
-    }
+    };
     updateWidth();
     window.addEventListener("resize", updateWidth);
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
 
+  // Iniciar animación
   useEffect(() => {
-    if (imageWidth === 0) return;
+    if (totalWidth === 0) return;
 
     controls.start({
-      x: [0, -imageWidth],
-      scale: [1, 1.05, 1], // escala leve para "respirar"
-      filter: [
-        "brightness(1)",
-        "brightness(1.1)",
-        "brightness(1)"
-      ], // brillo suave para animar
+      x: [0, -totalWidth],
       transition: {
-        x: {
-          repeat: Infinity,
-          repeatType: "loop",
-          duration: 20,
-          ease: "easeInOut",
-        },
-        scale: {
-          repeat: Infinity,
-          repeatType: "loop",
-          duration: 20,
-          ease: "easeInOut",
-        },
-        filter: {
-          repeat: Infinity,
-          repeatType: "loop",
-          duration: 20,
-          ease: "easeInOut",
-        },
+        repeat: Infinity,
+        repeatType: "loop",
+        duration: 30,
+        ease: "linear",
       },
     });
-  }, [imageWidth, controls]);
+  }, [totalWidth, controls]);
 
   return (
-    <div
-      className="relative w-full max-w-4xl mx-auto overflow-hidden rounded-2xl shadow-2xl
-                 bg-gradient-to-r from-[#0f172a] via-[#1e293b] to-[#0f172a]"
-    >
+    <div className="relative w-full max-w-6xl mx-auto overflow-hidden rounded-2xl shadow-2xl bg-gradient-to-r from-[#0f172a] via-[#1e293b] to-[#0f172a]">
+      {/* Carrusel animado */}
       <motion.div
         className="flex gap-0"
         animate={controls}
         ref={containerRef}
       >
-        <img
-          ref={imageRef}
-          src="/Servicios/promociones_1.jpeg"
-          alt="Promoción especial"
-          className="flex-none w-[80vw] sm:w-[50vw] md:w-[40vw] h-auto max-h-96 object-contain"
-          draggable={false}
-        />
-        <img
-          src="/Servicios/promociones_2.jpeg"
-          alt="Promoción especial"
-          className="flex-none w-[80vw] sm:w-[50vw] md:w-[40vw] h-auto max-h-96 object-contain"
-          draggable={false}
-        />
-        <img
-          src="/Servicios/promociones_3.jpeg"
-          alt="Promoción especial"
-          className="flex-none w-[80vw] sm:w-[50vw] md:w-[40vw] h-auto max-h-96 object-contain"
-          draggable={false}
-        />
-        <img
-          src="/Servicios/promociones_4.jpeg"
-          alt="Promoción especial"
-          className="flex-none w-[80vw] sm:w-[50vw] md:w-[40vw] h-auto max-h-96 object-contain"
-          draggable={false}
-        />
+        {/* Duplicamos el set de imágenes para loop infinito */}
+        {[...images, ...images].map((src, index) => (
+          <img
+            key={index}
+            src={src}
+            alt={`Promoción ${index + 1}`}
+            className="flex-none w-[80vw] sm:w-[50vw] md:w-[33vw] lg:w-[25vw] h-48 sm:h-64 md:h-80 object-cover"
+            draggable={false}
+          />
+        ))}
       </motion.div>
 
+      {/* Texto sobre el banner */}
       <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center px-4 pointer-events-none">
         <h2 className="text-white text-2xl sm:text-3xl md:text-4xl font-bold drop-shadow-lg">
           ¡Promoción por tiempo limitado, Aprovecha!
