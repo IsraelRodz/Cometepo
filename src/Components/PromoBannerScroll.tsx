@@ -70,7 +70,19 @@ export default function PromoBannerScroll() {
           draggable={false}
         />
         <img
-          src="/Servicios/promociones_1.jpeg"
+          src="/Servicios/promociones_2.jpeg"
+          alt="Promoción especial"
+          className="flex-none w-[80vw] sm:w-[50vw] md:w-[40vw] h-auto max-h-96 object-contain"
+          draggable={false}
+        />
+        <img
+          src="/Servicios/promociones_3.jpeg"
+          alt="Promoción especial"
+          className="flex-none w-[80vw] sm:w-[50vw] md:w-[40vw] h-auto max-h-96 object-contain"
+          draggable={false}
+        />
+        <img
+          src="/Servicios/promociones_4.jpeg"
           alt="Promoción especial"
           className="flex-none w-[80vw] sm:w-[50vw] md:w-[40vw] h-auto max-h-96 object-contain"
           draggable={false}
