@@ -13,12 +13,13 @@ export default function PromoBannerScroll() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [totalWidth, setTotalWidth] = useState(0);
   const controls = useAnimation();
+  const [paused, setPaused] = useState(false);
 
-  // Calcular el ancho total del slider
+  // Calcular el ancho total del carrusel
   useEffect(() => {
     const updateWidth = () => {
       if (containerRef.current) {
-        setTotalWidth(containerRef.current.scrollWidth / 2); // solo un set de imágenes
+        setTotalWidth(containerRef.current.scrollWidth / 2);
       }
     };
     updateWidth();
@@ -26,9 +27,9 @@ export default function PromoBannerScroll() {
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
 
-  // Iniciar animación
+  // Animar el movimiento horizontal infinito
   useEffect(() => {
-    if (totalWidth === 0) return;
+    if (totalWidth === 0 || paused) return;
 
     controls.start({
       x: [0, -totalWidth],
@@ -39,29 +40,36 @@ export default function PromoBannerScroll() {
         ease: "linear",
       },
     });
-  }, [totalWidth, controls]);
+  }, [totalWidth, paused, controls]);
 
   return (
-    <div className="relative w-full max-w-6xl mx-auto overflow-hidden rounded-2xl shadow-2xl bg-gradient-to-r from-[#0f172a] via-[#1e293b] to-[#0f172a]">
-      {/* Carrusel animado */}
-      <motion.div
-        className="flex gap-0"
-        animate={controls}
-        ref={containerRef}
-      >
-        {/* Duplicamos el set de imágenes para loop infinito */}
-        {[...images, ...images].map((src, index) => (
-          <img
-            key={index}
-            src={src}
-            alt={`Promoción ${index + 1}`}
-            className="flex-none w-[80vw] sm:w-[50vw] md:w-[33vw] lg:w-[25vw] h-48 sm:h-64 md:h-80 object-cover"
-            draggable={false}
-          />
-        ))}
-      </motion.div>
+    <div
+      className="relative w-full overflow-hidden bg-gradient-to-r from-[#0f172a] via-[#1e293b] to-[#0f172a]"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {/* Área visible del carrusel */}
+      <div className="aspect-[16/9] min-h-[200px] sm:min-h-[300px] md:min-h-[400px] overflow-hidden">
+        <motion.div className="flex" animate={controls} ref={containerRef}>
+          {[...images, ...images].map((src, i) => (
+            <motion.div
+              key={i}
+              className="w-full flex-shrink-0 overflow-hidden"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.4 }}
+            >
+              <img
+                src={src}
+                alt={`Promo ${i + 1}`}
+                className="w-full h-full object-cover transition-transform duration-300"
+                draggable={false}
+              />
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
 
-      {/* Texto sobre el banner */}
+      {/* Texto promocional encima del banner */}
       <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center px-4 pointer-events-none">
         <h2 className="text-white text-2xl sm:text-3xl md:text-4xl font-bold drop-shadow-lg">
           ¡Promoción por tiempo limitado, Aprovecha!
