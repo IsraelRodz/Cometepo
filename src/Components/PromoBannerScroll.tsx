@@ -11,65 +11,56 @@ const images = [
 
 export default function PromoBannerScroll() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [totalWidth, setTotalWidth] = useState(0);
   const controls = useAnimation();
-  const [paused, setPaused] = useState(false);
+  const [containerWidth, setContainerWidth] = useState(0);
 
-  // Calcular el ancho total del carrusel
   useEffect(() => {
-    const updateWidth = () => {
+    function updateWidth() {
       if (containerRef.current) {
-        setTotalWidth(containerRef.current.scrollWidth / 2);
+        setContainerWidth(containerRef.current.scrollWidth / 2); // solo el largo original
       }
-    };
+    }
+
     updateWidth();
     window.addEventListener("resize", updateWidth);
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
 
-  // Animar el movimiento horizontal infinito
   useEffect(() => {
-    if (totalWidth === 0 || paused) return;
+    if (containerWidth === 0) return;
 
     controls.start({
-      x: [0, -totalWidth],
+      x: [0, -containerWidth],
       transition: {
-        repeat: Infinity,
-        repeatType: "loop",
-        duration: 30,
-        ease: "linear",
+        x: {
+          repeat: Infinity,
+          repeatType: "loop",
+          duration: 25,
+          ease: "linear",
+        },
       },
     });
-  }, [totalWidth, paused, controls]);
+  }, [containerWidth, controls]);
 
   return (
-    <div
-      className="relative w-full overflow-hidden bg-gradient-to-r from-[#0f172a] via-[#1e293b] to-[#0f172a]"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
-      {/* Área visible del carrusel */}
-      <div className="aspect-[16/9] min-h-[200px] sm:min-h-[300px] md:min-h-[400px] overflow-hidden">
-        <motion.div className="flex" animate={controls} ref={containerRef}>
-          {[...images, ...images].map((src, i) => (
-            <motion.div
-              key={i}
-              className="w-full flex-shrink-0 overflow-hidden"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.4 }}
-            >
-              <img
-                src={src}
-                alt={`Promo ${i + 1}`}
-                className="w-full h-full object-cover transition-transform duration-300"
-                draggable={false}
-              />
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
+    <div className="relative w-full max-w-6xl mx-auto overflow-hidden rounded-2xl shadow-2xl bg-gradient-to-r from-slate-900 via-cyan-900 to-slate-900">
+      <motion.div
+        className="flex items-center gap-4 py-4"
+        animate={controls}
+        ref={containerRef}
+      >
+        {[...images, ...images].map((src, i) => (
+          <div key={i} className="flex-shrink-0 flex items-center justify-center">
+            <img
+              src={src}
+              alt={`Promoción ${i + 1}`}
+              className="h-64 md:h-80 w-auto object-contain"
+              draggable={false}
+            />
+          </div>
+        ))}
+      </motion.div>
 
-      {/* Texto promocional encima del banner */}
       <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center px-4 pointer-events-none">
         <h2 className="text-white text-2xl sm:text-3xl md:text-4xl font-bold drop-shadow-lg">
           ¡Promoción por tiempo limitado, Aprovecha!
