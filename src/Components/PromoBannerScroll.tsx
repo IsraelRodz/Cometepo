@@ -64,13 +64,13 @@ export default function PromoBannerScroll() {
       >
         <img
           ref={imageRef}
-          src="/Servicios/promociones.jpeg"
+          src="/Servicios/promociones_1.jpeg"
           alt="Promoción especial"
           className="flex-none w-[80vw] sm:w-[50vw] md:w-[40vw] h-auto max-h-96 object-contain"
           draggable={false}
         />
         <img
-          src="/Servicios/promociones.jpeg"
+          src="/Servicios/promociones_1.jpeg"
           alt="Promoción especial"
           className="flex-none w-[80vw] sm:w-[50vw] md:w-[40vw] h-auto max-h-96 object-contain"
           draggable={false}
