@@ -65,9 +65,7 @@ export default function PromoBannerScroll() {
         <h2 className="text-white text-2xl sm:text-3xl md:text-4xl font-bold drop-shadow-lg">
           ¡Promoción por tiempo limitado, Aprovecha!
         </h2>
-        <p className="text-white mt-2 text-sm sm:text-lg md:text-xl drop-shadow-md max-w-3xl">
-          Hasta 30% de descuento en nuestros productos.
-        </p>
+       
       </div>
     </div>
   );
