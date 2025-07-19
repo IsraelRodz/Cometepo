@@ -72,7 +72,7 @@ export default function PromoBannerScroll() {
 
         <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center px-4">
           <h2 className="text-white text-2xl sm:text-3xl md:text-4xl font-bold drop-shadow-lg">
-            ¡Promoción por tiempo limitado, Aprovecha!
+            ¡Producto disponible, Aprovecha!
           </h2>
         </div>
       </div>
