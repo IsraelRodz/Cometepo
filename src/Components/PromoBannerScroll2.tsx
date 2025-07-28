@@ -2,12 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 
 const images = [
-  "/Promo_2/promo_1.jpeg",
-  "/Promo_2/promo_2.jpeg",
-  "/Promo_2/promo_3.jpeg",
-  "/Promo_2/promo_4.jpeg",
-  "/Promo_2/promo_5.jpeg",
-  "/Promo_2/promo_6.jpeg",
+  { src: "/Promo_2/promo_1.jpeg", alt: "Lunazol paracetamol frasco ampula 100 ml" },
+  { src: "/Promo_2/promo_2.jpeg", alt: "Alfanar caspofungina frasco ampula polvo" },
+  { src: "/Promo_2/promo_3.jpeg", alt: "Mecxikem ciclofosfamida 1000 mg" },
+  { src: "/Promo_2/promo_4.jpeg", alt: "Novamexan bleomicina solucion inyectable" },
+  { src: "/Promo_2/promo_5.jpeg", alt: "Onecobax dacarbazina 200mg solucion inyectable" },
+  { src: "/Promo_2/promo_6.jpeg", alt: "Lorelin 11.25 mg" },
 ];
 
 export default function PromoBannerScroll() {
@@ -58,14 +58,14 @@ export default function PromoBannerScroll() {
             animate={controls}
             ref={containerRef}
           >
-            {[...images, ...images].map((src, i) => (
+            {[...images, ...images].map(({ src, alt }, i) => (
               <div
                 key={i}
                 className="flex-shrink-0 flex items-center justify-center"
               >
                 <img
                   src={src}
-                  alt={`Promoción medicamento ${i + 1}`}
+                  alt={alt}
                   className="h-64 md:h-80 w-auto object-contain rounded-xl"
                   loading="lazy"
                   draggable={false}
@@ -83,13 +83,13 @@ export default function PromoBannerScroll() {
           className="mt-4 text-center"
         >
           <h2
-            className="text-white text-3xl sm:text-4xl md:text-5xl font-extrabold drop-shadow-xl"
+            className="text-yellow-300 text-3xl sm:text-4xl md:text-5xl font-extrabold drop-shadow-xl"
             style={{ textShadow: "0 3px 8px rgba(0,0,0,0.85)" }}
           >
             ¡Aprovecha nuestras promociones en medicamentos!
           </h2>
           <p
-            className="text-blue-400 text-lg mt-2 font-semibold drop-shadow-md"
+            className="text-green-400 text-lg mt-2 font-semibold drop-shadow-md"
             style={{ textShadow: "0 1px 4px rgba(0,0,0,0.75)" }}
           >
             Haz clic para escribirnos por WhatsApp
