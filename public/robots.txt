@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://cometepo.com.mx/sitemap.xml
