@@ -43,10 +43,7 @@ export default function PromoBannerScroll() {
   }, [containerWidth, controls]);
 
   return (
-    <section
-      aria-label="Promociones de medicamentos"
-      className="my-6 px-4"
-    >
+    <section aria-label="Promociones de medicamentos" className="my-6 px-4">
       <a
         href="https://wa.me/525630847160"
         target="_blank"
@@ -78,15 +75,20 @@ export default function PromoBannerScroll() {
         </div>
       </a>
 
-      {/* Texto separado, abajo del carrusel */}
-      <div className="max-w-7xl mx-auto text-center mt-6 px-4">
+      {/* Texto animado con framer-motion */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="max-w-7xl mx-auto text-center mt-6 px-4"
+      >
         <h2 className="text-slate-900 text-3xl sm:text-4xl md:text-5xl font-bold">
           ¡Aprovecha nuestras promociones en medicamentos!
         </h2>
         <p className="text-slate-700 text-lg mt-2 font-medium">
           Haz clic para escribirnos por WhatsApp
         </p>
-      </div>
+      </motion.div>
     </section>
   );
 }
