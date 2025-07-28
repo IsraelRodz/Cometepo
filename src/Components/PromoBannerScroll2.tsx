@@ -43,10 +43,7 @@ export default function PromoBannerScroll() {
   }, [containerWidth, controls]);
 
   return (
-    <section
-      aria-label="Promociones de medicamentos"
-      className="my-6 px-4"
-    >
+    <section aria-label="Promociones de medicamentos" className="my-6 px-4">
       <a
         href="https://wa.me/525630847160"
         target="_blank"
@@ -86,19 +83,14 @@ export default function PromoBannerScroll() {
           className="mt-4 text-center"
         >
           <h2
-            className="text-white text-3xl sm:text-4xl md:text-5xl font-bold drop-shadow-lg"
-            style={{
-              background: "linear-gradient(90deg, #e0f7fa, #80deea)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              textShadow: "0 2px 4px rgba(0,0,0,0.6)",
-            }}
+            className="text-white text-3xl sm:text-4xl md:text-5xl font-extrabold drop-shadow-xl"
+            style={{ textShadow: "0 3px 8px rgba(0,0,0,0.85)" }}
           >
             ¡Aprovecha nuestras promociones en medicamentos!
           </h2>
           <p
-            className="text-white text-lg mt-2 font-medium drop-shadow-md"
-            style={{ textShadow: "0 1px 3px rgba(0,0,0,0.7)" }}
+            className="text-blue-400 text-lg mt-2 font-semibold drop-shadow-md"
+            style={{ textShadow: "0 1px 4px rgba(0,0,0,0.75)" }}
           >
             Haz clic para escribirnos por WhatsApp
           </p>
