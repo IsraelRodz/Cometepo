@@ -85,10 +85,21 @@ export default function PromoBannerScroll() {
           transition={{ duration: 1, delay: 0.3 }}
           className="mt-4 text-center"
         >
-          <h2 className="text-white text-3xl sm:text-4xl md:text-5xl font-bold drop-shadow-md">
+          <h2
+            className="text-white text-3xl sm:text-4xl md:text-5xl font-bold drop-shadow-lg"
+            style={{
+              background: "linear-gradient(90deg, #e0f7fa, #80deea)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              textShadow: "0 2px 4px rgba(0,0,0,0.6)",
+            }}
+          >
             ¡Aprovecha nuestras promociones en medicamentos!
           </h2>
-          <p className="text-white text-lg mt-2 font-medium drop-shadow-sm">
+          <p
+            className="text-white text-lg mt-2 font-medium drop-shadow-md"
+            style={{ textShadow: "0 1px 3px rgba(0,0,0,0.7)" }}
+          >
             Haz clic para escribirnos por WhatsApp
           </p>
         </motion.div>
