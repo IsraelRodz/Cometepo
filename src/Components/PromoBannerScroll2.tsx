@@ -83,7 +83,7 @@ export default function PromoBannerScroll() {
           className="mt-4 text-center"
         >
           <h2
-            className="text-yellow-300 text-3xl sm:text-4xl md:text-5xl font-extrabold drop-shadow-xl"
+            className="text-white text-3xl sm:text-4xl md:text-5xl font-extrabold drop-shadow-xl"
             style={{ textShadow: "0 3px 8px rgba(0,0,0,0.85)" }}
           >
             ¡Aprovecha nuestras promociones en medicamentos!
