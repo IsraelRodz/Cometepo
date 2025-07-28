@@ -43,15 +43,18 @@ export default function PromoBannerScroll() {
   }, [containerWidth, controls]);
 
   return (
-    <section aria-label="Promociones de medicamentos" className="my-6 px-4">
+    <section
+      aria-label="Promociones de medicamentos"
+      className="my-6 px-4"
+    >
       <a
         href="https://wa.me/525630847160"
         target="_blank"
         rel="noopener noreferrer"
-        className="block"
+        className="block pointer-events-auto"
         aria-label="Contáctanos por WhatsApp para más promociones"
       >
-        <div className="relative w-full max-w-7xl mx-auto overflow-hidden rounded-3xl shadow-xl bg-gradient-to-r from-slate-900 via-cyan-900 to-slate-900 cursor-pointer">
+        <div className="relative w-full max-w-7xl mx-auto overflow-hidden rounded-3xl shadow-xl bg-gradient-to-r from-slate-900 via-cyan-900 to-slate-900 cursor-pointer pointer-events-auto">
           <motion.div
             className="flex items-center gap-8 py-4"
             animate={controls}
@@ -72,23 +75,17 @@ export default function PromoBannerScroll() {
               </div>
             ))}
           </motion.div>
+
+          <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center px-4 pointer-events-none">
+            <h2 className="text-white text-3xl sm:text-4xl md:text-5xl font-bold drop-shadow-md">
+              ¡Aprovecha nuestras promociones en medicamentos!
+            </h2>
+            <p className="text-white text-lg mt-2 font-medium drop-shadow-sm">
+              Haz clic para escribirnos por WhatsApp
+            </p>
+          </div>
         </div>
       </a>
-
-      {/* Texto animado con framer-motion */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="max-w-7xl mx-auto text-center mt-6 px-4"
-      >
-        <h2 className="text-slate-900 text-3xl sm:text-4xl md:text-5xl font-bold">
-          ¡Aprovecha nuestras promociones en medicamentos!
-        </h2>
-        <p className="text-slate-700 text-lg mt-2 font-medium">
-          Haz clic para escribirnos por WhatsApp
-        </p>
-      </motion.div>
     </section>
   );
 }
