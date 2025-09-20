@@ -2,25 +2,25 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 
 const images = [
-  { src: "/Promo_2/sep_1.jpeg"},
-  { src: "/Promo_2/sep_2.jpeg"},
-  { src: "/Promo_2/sep_3.jpeg"},
-  { src: "/Promo_2/sep_4.jpeg"},
-  { src: "/Promo_2/sep_5.jpeg"},
-  { src: "/Promo_2/sep_6.jpeg"},
-  { src: "/Promo_2/sep_7.jpeg"},
-  { src: "/Promo_2/sep_8.jpeg"},
-  { src: "/Promo_2/sep_9.jpeg"},
-  { src: "/Promo_2/sep_10.jpeg"},
-  { src: "/Promo_2/sep_11.jpeg"},
-  { src: "/Promo_2/sep_12.jpeg"},
-  { src: "/Promo_2/sep_13.jpeg"},
-  { src: "/Promo_2/sep_14.jpeg"},
-  { src: "/Promo_2/sep_15.jpeg"},
-  { src: "/Promo_2/sep_16.jpeg"},
-  { src: "/Promo_2/sep_17.jpeg"},
-  { src: "/Promo_2/sep_18.jpeg"},
-  { src: "/Promo_2/sep_19.jpeg"}
+  { src: "/Promo_2/sep_1.jpeg" },
+  { src: "/Promo_2/sep_2.jpeg" },
+  { src: "/Promo_2/sep_3.jpeg" },
+  { src: "/Promo_2/sep_4.jpeg" },
+  { src: "/Promo_2/sep_5.jpeg" },
+  { src: "/Promo_2/sep_6.jpeg" },
+  { src: "/Promo_2/sep_7.jpeg" },
+  { src: "/Promo_2/sep_8.jpeg" },
+  { src: "/Promo_2/sep_9.jpeg" },
+  { src: "/Promo_2/sep_10.jpeg" },
+  { src: "/Promo_2/sep_11.jpeg" },
+  { src: "/Promo_2/sep_12.jpeg" },
+  { src: "/Promo_2/sep_13.jpeg" },
+  { src: "/Promo_2/sep_14.jpeg" },
+  { src: "/Promo_2/sep_15.jpeg" },
+  { src: "/Promo_2/sep_16.jpeg" },
+  { src: "/Promo_2/sep_17.jpeg" },
+  { src: "/Promo_2/sep_18.jpeg" },
+  { src: "/Promo_2/sep_19.jpeg" },
 ];
 
 export default function PromoBannerScroll() {
@@ -46,9 +46,10 @@ export default function PromoBannerScroll() {
     if (containerWidth === 0) return;
 
     controls.start({
-      x: [0, -containerWidth],
+      x: [0, -containerWidth], // va de izquierda a derecha
       transition: {
         repeat: Infinity,
+        repeatType: "reverse", // 🔥 rebota de regreso
         duration: 30,
         ease: "linear",
       },
@@ -71,14 +72,13 @@ export default function PromoBannerScroll() {
             animate={controls}
             ref={containerRef}
           >
-            {[...images, ...images].map(({ src }, i) => (
+            {images.map(({ src }, i) => (
               <div
                 key={i}
                 className="flex-shrink-0 flex items-center justify-center"
               >
                 <img
                   src={src}
-                  
                   className="h-64 md:h-80 w-auto object-contain rounded-xl"
                   loading="lazy"
                   draggable={false}
