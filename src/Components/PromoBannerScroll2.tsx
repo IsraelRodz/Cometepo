@@ -2,12 +2,25 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 
 const images = [
-  { src: "/Promo_2/promo_1.jpeg", alt: "Lunazol paracetamol frasco ampula 100 ml" },
-  { src: "/Promo_2/promo_2.jpeg", alt: "Alfanar caspofungina frasco ampula polvo" },
-  { src: "/Promo_2/promo_3.jpeg", alt: "Mecxikem ciclofosfamida 1000 mg" },
-  { src: "/Promo_2/promo_4.jpeg", alt: "Novamexan bleomicina solucion inyectable" },
-  { src: "/Promo_2/promo_5.jpeg", alt: "Onecobax dacarbazina 200mg solucion inyectable" },
-  { src: "/Promo_2/promo_6.jpeg", alt: "Lorelin 11.25 mg" },
+  { src: "/Promo_2/sep_1.jpeg"},
+  { src: "/Promo_2/sep_2.jpeg"},
+  { src: "/Promo_2/sep_3.jpeg"},
+  { src: "/Promo_2/sep_4.jpeg"},
+  { src: "/Promo_2/sep_5.jpeg"},
+  { src: "/Promo_2/sep_6.jpeg"},
+  { src: "/Promo_2/sep_7.jpeg"},
+  { src: "/Promo_2/sep_8.jpeg"},
+  { src: "/Promo_2/sep_9.jpeg"},
+  { src: "/Promo_2/sep_10.jpeg"},
+  { src: "/Promo_2/sep_11.jpeg"},
+  { src: "/Promo_2/sep_12.jpeg"},
+  { src: "/Promo_2/sep_13.jpeg"},
+  { src: "/Promo_2/sep_14.jpeg"},
+  { src: "/Promo_2/sep_15.jpeg"},
+  { src: "/Promo_2/sep_16.jpeg"},
+  { src: "/Promo_2/sep_17.jpeg"},
+  { src: "/Promo_2/sep_18.jpeg"},
+  { src: "/Promo_2/sep_19.jpeg"}
 ];
 
 export default function PromoBannerScroll() {
@@ -58,14 +71,14 @@ export default function PromoBannerScroll() {
             animate={controls}
             ref={containerRef}
           >
-            {[...images, ...images].map(({ src, alt }, i) => (
+            {[...images, ...images].map(({ src }, i) => (
               <div
                 key={i}
                 className="flex-shrink-0 flex items-center justify-center"
               >
                 <img
                   src={src}
-                  alt={alt}
+                  
                   className="h-64 md:h-80 w-auto object-contain rounded-xl"
                   loading="lazy"
                   draggable={false}
