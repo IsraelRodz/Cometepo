@@ -27,7 +27,35 @@ export default function PromoBannerScroll() {
   const containerRef = useRef<HTMLDivElement>(null);
   const controls = useAnimation();
   const [containerWidth, setContainerWidth] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Detectar si es móvil o escritorio
+  useEffect(() => {
+    const checkDevice = () => {
+      setIsMobile(window.innerWidth < 768); // móvil < md
+    };
+    checkDevice();
+    window.addEventListener("resize", checkDevice);
+    return () => window.removeEventListener("resize", checkDevice);
+  }, []);
+
+  // Animación automática solo en móvil
+  useEffect(() => {
+    if (!isMobile || containerWidth === 0) return;
+
+    controls.start({
+      x: [0, -containerWidth],
+      transition: {
+        repeat: Infinity,
+        repeatType: "reverse",
+        duration: 30,
+        ease: "linear",
+      },
+    });
+  }, [containerWidth, controls, isMobile]);
+
+  // Calcular ancho del carrusel
   useEffect(() => {
     const updateWidth = () => {
       if (containerRef.current) {
@@ -42,19 +70,14 @@ export default function PromoBannerScroll() {
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
 
-  useEffect(() => {
-    if (containerWidth === 0) return;
+  // Navegación manual en escritorio
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
 
-    controls.start({
-      x: [0, -containerWidth], // va de izquierda a derecha
-      transition: {
-        repeat: Infinity,
-        repeatType: "reverse", // 🔥 rebota de regreso
-        duration: 30,
-        ease: "linear",
-      },
-    });
-  }, [containerWidth, controls]);
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
 
   return (
     <section aria-label="Promociones de medicamentos" className="my-6 px-4">
@@ -67,25 +90,52 @@ export default function PromoBannerScroll() {
       >
         <div className="relative overflow-hidden rounded-3xl shadow-xl bg-gradient-to-r from-slate-900 via-cyan-900 to-slate-900 cursor-pointer pointer-events-auto">
           {/* Carrusel */}
-          <motion.div
-            className="flex items-center gap-8 py-4"
-            animate={controls}
-            ref={containerRef}
-          >
-            {images.map(({ src }, i) => (
-              <div
-                key={i}
-                className="flex-shrink-0 flex items-center justify-center"
+          {isMobile ? (
+            <motion.div
+              className="flex items-center gap-8 py-4"
+              animate={controls}
+              ref={containerRef}
+            >
+              {images.map(({ src }, i) => (
+                <div
+                  key={i}
+                  className="flex-shrink-0 flex items-center justify-center"
+                >
+                  <img
+                    src={src}
+                    className="h-64 md:h-80 w-auto object-contain rounded-xl"
+                    loading="lazy"
+                    draggable={false}
+                  />
+                </div>
+              ))}
+            </motion.div>
+          ) : (
+            <div className="relative flex items-center justify-center py-4">
+              <img
+                src={images[currentIndex].src}
+                className="h-64 md:h-80 w-auto object-contain rounded-xl"
+                loading="lazy"
+                draggable={false}
+              />
+
+              {/* Botón anterior */}
+              <button
+                onClick={handlePrev}
+                className="absolute left-4 bg-black/50 text-white p-3 rounded-full hover:bg-black/70"
               >
-                <img
-                  src={src}
-                  className="h-64 md:h-80 w-auto object-contain rounded-xl"
-                  loading="lazy"
-                  draggable={false}
-                />
-              </div>
-            ))}
-          </motion.div>
+                ←
+              </button>
+
+              {/* Botón siguiente */}
+              <button
+                onClick={handleNext}
+                className="absolute right-4 bg-black/50 text-white p-3 rounded-full hover:bg-black/70"
+              >
+                →
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Texto animado debajo */}
