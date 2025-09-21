@@ -71,23 +71,19 @@ export default function PromoBannerScroll() {
   }, []);
 
   // Navegación manual en escritorio
-  const handlePrev = () => {
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
     setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   };
 
-  const handleNext = () => {
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
     setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   };
 
   return (
     <section aria-label="Promociones de medicamentos" className="my-6 px-4">
-      <a
-        href="https://wa.me/525630847160"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block pointer-events-auto max-w-7xl mx-auto"
-        aria-label="Contáctanos por WhatsApp para más promociones"
-      >
+      <div className="block pointer-events-auto max-w-7xl mx-auto">
         <div className="relative overflow-hidden rounded-3xl shadow-xl bg-gradient-to-r from-slate-900 via-cyan-900 to-slate-900 cursor-pointer pointer-events-auto">
           {/* Carrusel */}
           {isMobile ? (
@@ -138,7 +134,7 @@ export default function PromoBannerScroll() {
           )}
         </div>
 
-        {/* Texto animado debajo */}
+        {/* Texto animado debajo con enlace a WhatsApp */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -151,14 +147,16 @@ export default function PromoBannerScroll() {
           >
             ¡Aprovecha nuestras promociones en medicamentos!
           </h2>
-          <p
-            className="text-green-400 text-lg mt-2 font-semibold drop-shadow-md"
-            style={{ textShadow: "0 1px 4px rgba(0,0,0,0.75)" }}
+          <a
+            href="https://wa.me/525630847160"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block mt-3 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-xl font-bold text-lg shadow-lg transition"
           >
             Haz clic para escribirnos por WhatsApp
-          </p>
+          </a>
         </motion.div>
-      </a>
+      </div>
     </section>
   );
 }
