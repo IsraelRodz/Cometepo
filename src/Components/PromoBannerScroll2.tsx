@@ -33,7 +33,7 @@ export default function PromoBannerScroll() {
   // Detectar si es móvil o escritorio
   useEffect(() => {
     const checkDevice = () => {
-      setIsMobile(window.innerWidth < 768); // móvil < md
+      setIsMobile(window.innerWidth < 768);
     };
     checkDevice();
     window.addEventListener("resize", checkDevice);
@@ -107,10 +107,27 @@ export default function PromoBannerScroll() {
               ))}
             </motion.div>
           ) : (
-            <div className="relative flex items-center justify-center py-4">
+            <div className="relative flex items-center justify-center py-4 gap-6">
+              {/* Imagen previa izquierda */}
+              <img
+                src={images[(currentIndex - 1 + images.length) % images.length].src}
+                className="h-56 md:h-72 w-auto object-contain opacity-50 scale-90 rounded-xl"
+                loading="lazy"
+                draggable={false}
+              />
+
+              {/* Imagen central */}
               <img
                 src={images[currentIndex].src}
-                className="h-64 md:h-80 w-auto object-contain rounded-xl"
+                className="h-64 md:h-80 w-auto object-contain rounded-2xl shadow-lg"
+                loading="lazy"
+                draggable={false}
+              />
+
+              {/* Imagen siguiente derecha */}
+              <img
+                src={images[(currentIndex + 1) % images.length].src}
+                className="h-56 md:h-72 w-auto object-contain opacity-50 scale-90 rounded-xl"
                 loading="lazy"
                 draggable={false}
               />
@@ -147,14 +164,16 @@ export default function PromoBannerScroll() {
           >
             ¡Aprovecha nuestras promociones en medicamentos!
           </h2>
-          <a
+          <motion.a
             href="https://wa.me/525630847160"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block mt-3 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-xl font-bold text-lg shadow-lg transition"
+            className="inline-block mt-3 bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-bold text-xl shadow-lg"
+            animate={{ y: [0, -8, 0] }}
+            transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
           >
             Haz clic para escribirnos por WhatsApp
-          </a>
+          </motion.a>
         </motion.div>
       </div>
     </section>
