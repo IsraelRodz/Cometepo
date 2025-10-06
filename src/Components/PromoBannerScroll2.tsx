@@ -165,7 +165,7 @@ export default function PromoBannerScroll() {
             ¡Aprovecha nuestras promociones en medicamentos!
           </h2>
           <motion.a
-            href="https://wa.me/525630847160"
+            href="https://wa.me/525625855729"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block mt-3 bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-bold text-xl shadow-lg"
