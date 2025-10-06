@@ -58,7 +58,7 @@ const Contacto = () => {
               <FontAwesomeIcon icon={faFacebook} />
             </a>
             <a
-              href="https://wa.me/525630847160"
+              href="https://wa.me/525625855729"
               target="_blank"
               rel="noopener noreferrer"
               className="text-green-500 hover:text-green-700 transition-transform duration-300 ease-in-out transform hover:scale-125"
