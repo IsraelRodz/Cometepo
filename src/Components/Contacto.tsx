@@ -82,8 +82,8 @@ const Contacto = () => {
               <FontAwesomeIcon icon={faLinkedin}/>
             </a>
             <a
-             href="tel:+525630847160"
-             aria-label="Llamar al número +52 5630847160"
+             href="tel:+525625855729"
+             aria-label="Llamar al número +52 5625855729"
             className="text-green-600 hover:text-green-800 transition-transform duration-300 ease-in-out transform hover:scale-125"
             >
               <FontAwesomeIcon icon={faPhoneAlt} />
