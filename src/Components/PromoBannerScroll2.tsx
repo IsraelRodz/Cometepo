@@ -2,25 +2,54 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 
 const images = [
-  { src: "/Promo_2/sep_1.jpeg" },
-  { src: "/Promo_2/sep_2.jpeg" },
-  { src: "/Promo_2/sep_3.jpeg" },
-  { src: "/Promo_2/sep_4.jpeg" },
-  { src: "/Promo_2/sep_5.jpeg" },
-  { src: "/Promo_2/sep_6.jpeg" },
-  { src: "/Promo_2/sep_7.jpeg" },
-  { src: "/Promo_2/sep_8.jpeg" },
-  { src: "/Promo_2/sep_9.jpeg" },
-  { src: "/Promo_2/sep_10.jpeg" },
-  { src: "/Promo_2/sep_11.jpeg" },
-  { src: "/Promo_2/sep_12.jpeg" },
-  { src: "/Promo_2/sep_13.jpeg" },
-  { src: "/Promo_2/sep_14.jpeg" },
-  { src: "/Promo_2/sep_15.jpeg" },
-  { src: "/Promo_2/sep_16.jpeg" },
-  { src: "/Promo_2/sep_17.jpeg" },
-  { src: "/Promo_2/sep_18.jpeg" },
-  { src: "/Promo_2/sep_19.jpeg" },
+  { src: "/Promo_2/promo_1.jpeg" },
+  { src: "/Promo_2/promo_2.jpeg" },
+  { src: "/Promo_2/promo_3.jpeg" },
+  { src: "/Promo_2/promo_4.jpeg" },
+  { src: "/Promo_2/promo_5.jpeg" },
+  { src: "/Promo_2/promo_6.jpeg" },
+  { src: "/Promo_2/promo_7.jpeg" },
+  { src: "/Promo_2/promo_8.jpeg" },
+  { src: "/Promo_2/promo_9.jpeg" },
+  { src: "/Promo_2/promo_10.jpeg" },
+  { src: "/Promo_2/promo_11.jpeg" },
+  { src: "/Promo_2/promo_12.jpeg" },
+  { src: "/Promo_2/promo_13.jpeg" },
+  { src: "/Promo_2/promo_14.jpeg" },
+  { src: "/Promo_2/promo_15.jpeg" },
+  { src: "/Promo_2/promo_16.jpeg" },
+  { src: "/Promo_2/promo_17.jpeg" },
+  { src: "/Promo_2/promo_18.jpeg" },
+  { src: "/Promo_2/promo_19.jpeg" },
+  { src: "/Promo_2/promo_20.jpeg" },
+  { src: "/Promo_2/promo_21.jpeg" },
+  { src: "/Promo_2/promo_22.jpeg" },
+  { src: "/Promo_2/promo_23.jpeg" },
+  { src: "/Promo_2/promo_24.jpeg" },
+  { src: "/Promo_2/promo_25.jpeg" },
+  { src: "/Promo_2/promo_26.jpeg" },
+  { src: "/Promo_2/promo_27.jpeg" },
+  { src: "/Promo_2/promo_28.jpeg" },
+  { src: "/Promo_2/promo_29.jpeg" },
+  { src: "/Promo_2/promo_30.jpeg" },
+  { src: "/Promo_2/promo_31.jpeg" },
+  { src: "/Promo_2/promo_32.jpeg" },
+  { src: "/Promo_2/promo_33.jpeg" },
+  { src: "/Promo_2/promo_34.jpeg" },
+  { src: "/Promo_2/promo_35.jpeg" },
+  { src: "/Promo_2/promo_36.jpeg" },
+  { src: "/Promo_2/promo_37.jpeg" },
+  { src: "/Promo_2/promo_38.jpeg" },
+  { src: "/Promo_2/promo_39.jpeg" },
+  { src: "/Promo_2/promo_40.jpeg" },
+  { src: "/Promo_2/promo_41.jpeg" },
+  { src: "/Promo_2/promo_42.jpeg" },
+  { src: "/Promo_2/promo_43.jpeg" },
+  { src: "/Promo_2/promo_44.jpeg" },
+  { src: "/Promo_2/promo_45.jpeg" },
+  { src: "/Promo_2/promo_46.jpeg" },
+  { src: "/Promo_2/promo_47.jpeg" },
+  
 ];
 
 export default function PromoBannerScroll() {
@@ -30,7 +59,6 @@ export default function PromoBannerScroll() {
   const [isMobile, setIsMobile] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Detectar si es móvil o escritorio
   useEffect(() => {
     const checkDevice = () => {
       setIsMobile(window.innerWidth < 768);
@@ -40,7 +68,6 @@ export default function PromoBannerScroll() {
     return () => window.removeEventListener("resize", checkDevice);
   }, []);
 
-  // Animación automática solo en móvil
   useEffect(() => {
     if (!isMobile || containerWidth === 0) return;
 
@@ -55,7 +82,6 @@ export default function PromoBannerScroll() {
     });
   }, [containerWidth, controls, isMobile]);
 
-  // Calcular ancho del carrusel
   useEffect(() => {
     const updateWidth = () => {
       if (containerRef.current) {
@@ -64,13 +90,11 @@ export default function PromoBannerScroll() {
         setContainerWidth(scrollWidth - offsetWidth);
       }
     };
-
     updateWidth();
     window.addEventListener("resize", updateWidth);
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
 
-  // Navegación manual en escritorio
   const handlePrev = (e: React.MouseEvent) => {
     e.stopPropagation();
     setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
@@ -84,8 +108,7 @@ export default function PromoBannerScroll() {
   return (
     <section aria-label="Promociones de medicamentos" className="my-6 px-4">
       <div className="block pointer-events-auto max-w-7xl mx-auto">
-        <div className="relative overflow-hidden rounded-3xl shadow-xl bg-gradient-to-r from-slate-900 via-cyan-900 to-slate-900 cursor-pointer pointer-events-auto">
-          {/* Carrusel */}
+        <div className="relative overflow-hidden rounded-[2rem] shadow-2xl bg-gradient-to-r from-slate-900 via-cyan-900 to-slate-900">
           {isMobile ? (
             <motion.div
               className="flex items-center gap-8 py-4"
@@ -93,13 +116,10 @@ export default function PromoBannerScroll() {
               ref={containerRef}
             >
               {images.map(({ src }, i) => (
-                <div
-                  key={i}
-                  className="flex-shrink-0 flex items-center justify-center"
-                >
+                <div key={i} className="flex-shrink-0 flex items-center justify-center">
                   <img
                     src={src}
-                    className="h-64 md:h-80 w-auto object-contain rounded-xl"
+                    className="h-64 md:h-80 w-auto object-contain rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300"
                     loading="lazy"
                     draggable={false}
                   />
@@ -107,43 +127,43 @@ export default function PromoBannerScroll() {
               ))}
             </motion.div>
           ) : (
-            <div className="relative flex items-center justify-center py-4 gap-6">
-              {/* Imagen previa izquierda */}
-              <img
-                src={images[(currentIndex - 1 + images.length) % images.length].src}
-                className="h-56 md:h-72 w-auto object-contain opacity-50 scale-90 rounded-xl"
-                loading="lazy"
-                draggable={false}
-              />
+            <div className="relative flex items-center justify-center py-6 gap-10 perspective-1000">
+              {[-2, -1, 0, 1, 2].map((offset) => {
+                const index = (currentIndex + offset + images.length) % images.length;
+                const isCenter = offset === 0;
+                const scale = isCenter ? 1.2 : 0.9 - Math.abs(offset) * 0.05;
+                const zIndex = isCenter ? 50 : 30 - Math.abs(offset);
+                const opacity = isCenter ? 1 : 0.5;
+                const rotateY = offset * 15;
 
-              {/* Imagen central */}
-              <img
-                src={images[currentIndex].src}
-                className="h-64 md:h-80 w-auto object-contain rounded-2xl shadow-lg"
-                loading="lazy"
-                draggable={false}
-              />
+                return (
+                  <motion.img
+                    key={index}
+                    src={images[index].src}
+                    className="w-auto h-72 md:h-80 rounded-3xl shadow-xl object-contain"
+                    style={{
+                      zIndex,
+                      opacity,
+                      transform: `scale(${scale}) rotateY(${rotateY}deg)`,
+                      transition: "transform 0.8s ease, opacity 0.8s ease",
+                    }}
+                    loading="lazy"
+                    draggable={false}
+                    layout
+                    whileHover={{ scale: isCenter ? 1.25 : scale + 0.05 }}
+                  />
+                );
+              })}
 
-              {/* Imagen siguiente derecha */}
-              <img
-                src={images[(currentIndex + 1) % images.length].src}
-                className="h-56 md:h-72 w-auto object-contain opacity-50 scale-90 rounded-xl"
-                loading="lazy"
-                draggable={false}
-              />
-
-              {/* Botón anterior */}
               <button
                 onClick={handlePrev}
-                className="absolute left-4 bg-black/50 text-white p-3 rounded-full hover:bg-black/70"
+                className="absolute left-6 bg-black/40 text-white p-4 rounded-full hover:bg-black/70 backdrop-blur-sm transition"
               >
                 ←
               </button>
-
-              {/* Botón siguiente */}
               <button
                 onClick={handleNext}
-                className="absolute right-4 bg-black/50 text-white p-3 rounded-full hover:bg-black/70"
+                className="absolute right-6 bg-black/40 text-white p-4 rounded-full hover:bg-black/70 backdrop-blur-sm transition"
               >
                 →
               </button>
@@ -151,25 +171,22 @@ export default function PromoBannerScroll() {
           )}
         </div>
 
-        {/* Texto animado debajo con enlace a WhatsApp */}
+        {/* Texto animado debajo */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3 }}
-          className="mt-4 text-center"
+          className="mt-6 text-center"
         >
-          <h2
-            className="text-white text-3xl sm:text-4xl md:text-5xl font-extrabold drop-shadow-xl"
-            style={{ textShadow: "0 3px 8px rgba(0,0,0,0.85)" }}
-          >
+          <h2 className="text-white text-3xl sm:text-4xl md:text-5xl font-extrabold drop-shadow-xl">
             ¡Aprovecha nuestras promociones en medicamentos!
           </h2>
           <motion.a
             href="https://wa.me/525625855729"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block mt-3 bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-bold text-xl shadow-lg"
-            animate={{ y: [0, -8, 0] }}
+            className="inline-block mt-4 bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-bold text-xl shadow-lg"
+            animate={{ y: [0, -6, 0] }}
             transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
           >
             Haz clic para escribirnos por WhatsApp
