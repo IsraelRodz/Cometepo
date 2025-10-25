@@ -1,54 +1,46 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 
+// ⚠️ IMPORTANTE: tus imágenes deben estar en /public/Promo_2/
 const images = [
-  { src: "public/Promo_2/promo_1.jpeg" },
-  { src: "public/Promo_2/promo_2.jpeg" },
-  { src: "public/Promo_2/promo_3.jpeg" },
-  { src: "public/Promo_2/promo_4.jpeg" },
-  { src: "public/Promo_2/promo_5.jpeg" },
-  { src: "public/Promo_2/promo_6.jpeg" },
-  { src: "public/Promo_2/promo_7.jpeg" },
-  { src: "public/Promo_2/promo_8.jpeg" },
-  { src: "public/Promo_2/promo_9.jpeg" },
-  { src: "public/Promo_2/promo_10.jpeg" },
-{ src: "public/Promo_2/promo_11.jpeg" },
-{ src: "public/Promo_2/promo_12.jpeg" },
-{ src: "public/Promo_2/promo_13.jpeg" },
-{ src: "public/Promo_2/promo_14.jpeg" },
-{ src: "public/Promo_2/promo_15.jpeg" },
-{ src: "public/Promo_2/promo_16.jpeg" },
-{ src: "public/Promo_2/promo_17.jpeg" },
-{ src: "public/Promo_2/promo_18.jpeg" },
-{ src: "public/Promo_2/promo_19.jpeg" },
-{ src: "public/Promo_2/promo_20.jpeg" },
-{ src: "public/Promo_2/promo_21.jpeg" },
-{ src: "public/Promo_2/promo_22.jpeg" },
-{ src: "public/Promo_2/promo_23.jpeg" },
-{ src: "public/Promo_2/promo_24.jpeg" },
-{ src: "public/Promo_2/promo_25.jpeg" },
-{ src: "public/Promo_2/promo_26.jpeg" },
-{ src: "public/Promo_2/promo_27.jpeg" },
-{ src: "public/Promo_2/promo_28.jpeg" },
-{ src: "public/Promo_2/promo_29.jpeg" },
-{ src: "public/Promo_2/promo_30.jpeg" },
-{ src: "public/Promo_2/promo_31.jpeg" },
-{ src: "public/Promo_2/promo_32.jpeg" },
-{ src: "public/Promo_2/promo_33.jpeg" },
-{ src: "public/Promo_2/promo_34.jpeg" },
-{ src: "public/Promo_2/promo_35.jpeg" },
-{ src: "public/Promo_2/promo_36.jpeg" },
-{ src: "public/Promo_2/promo_37.jpeg" },
-{ src: "public/Promo_2/promo_38.jpeg" },
-{ src: "public/Promo_2/promo_39.jpeg" },
-{ src: "public/Promo_2/promo_40.jpeg" },
-{ src: "public/Promo_2/promo_41.jpeg" },
-{ src: "public/Promo_2/promo_42.jpeg" },
-{ src: "public/Promo_2/promo_43.jpeg" },
-{ src: "public/Promo_2/promo_44.jpeg" },
-{ src: "public/Promo_2/promo_45.jpeg" },
-{ src: "public/Promo_2/promo_46.jpeg" },
-{ src: "public/Promo_2/promo_47.jpeg" },
+  { src: "/Promo_2/promo_10.jpeg" },
+  { src: "/Promo_2/promo_11.jpeg" },
+  { src: "/Promo_2/promo_12.jpeg" },
+  { src: "/Promo_2/promo_13.jpeg" },
+  { src: "/Promo_2/promo_14.jpeg" },
+  { src: "/Promo_2/promo_15.jpeg" },
+  { src: "/Promo_2/promo_16.jpeg" },
+  { src: "/Promo_2/promo_17.jpeg" },
+  { src: "/Promo_2/promo_18.jpeg" },
+  { src: "/Promo_2/promo_19.jpeg" },
+  { src: "/Promo_2/promo_20.jpeg" },
+  { src: "/Promo_2/promo_21.jpeg" },
+  { src: "/Promo_2/promo_22.jpeg" },
+  { src: "/Promo_2/promo_23.jpeg" },
+  { src: "/Promo_2/promo_24.jpeg" },
+  { src: "/Promo_2/promo_25.jpeg" },
+  { src: "/Promo_2/promo_26.jpeg" },
+  { src: "/Promo_2/promo_27.jpeg" },
+  { src: "/Promo_2/promo_28.jpeg" },
+  { src: "/Promo_2/promo_29.jpeg" },
+  { src: "/Promo_2/promo_30.jpeg" },
+  { src: "/Promo_2/promo_31.jpeg" },
+  { src: "/Promo_2/promo_32.jpeg" },
+  { src: "/Promo_2/promo_33.jpeg" },
+  { src: "/Promo_2/promo_34.jpeg" },
+  { src: "/Promo_2/promo_35.jpeg" },
+  { src: "/Promo_2/promo_36.jpeg" },
+  { src: "/Promo_2/promo_37.jpeg" },
+  { src: "/Promo_2/promo_38.jpeg" },
+  { src: "/Promo_2/promo_39.jpeg" },
+  { src: "/Promo_2/promo_40.jpeg" },
+  { src: "/Promo_2/promo_41.jpeg" },
+  { src: "/Promo_2/promo_42.jpeg" },
+  { src: "/Promo_2/promo_43.jpeg" },
+  { src: "/Promo_2/promo_44.jpeg" },
+  { src: "/Promo_2/promo_45.jpeg" },
+  { src: "/Promo_2/promo_46.jpeg" },
+  { src: "/Promo_2/promo_47.jpeg" },
 ];
 
 export default function PromoBannerScroll() {
@@ -58,29 +50,15 @@ export default function PromoBannerScroll() {
   const [isMobile, setIsMobile] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Detectar versión móvil o escritorio
   useEffect(() => {
-    const checkDevice = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
+    const checkDevice = () => setIsMobile(window.innerWidth < 768);
     checkDevice();
     window.addEventListener("resize", checkDevice);
     return () => window.removeEventListener("resize", checkDevice);
   }, []);
 
-  useEffect(() => {
-    if (!isMobile || containerWidth === 0) return;
-
-    controls.start({
-      x: [0, -containerWidth],
-      transition: {
-        repeat: Infinity,
-        repeatType: "reverse",
-        duration: 30,
-        ease: "linear",
-      },
-    });
-  }, [containerWidth, controls, isMobile]);
-
+  // Actualizar ancho del contenedor (para el scroll automático móvil)
   useEffect(() => {
     const updateWidth = () => {
       if (containerRef.current) {
@@ -94,11 +72,34 @@ export default function PromoBannerScroll() {
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
 
+  // Animación automática móvil
+  useEffect(() => {
+    if (!isMobile || containerWidth === 0) return;
+    controls.start({
+      x: [0, -containerWidth],
+      transition: {
+        repeat: Infinity,
+        repeatType: "reverse",
+        duration: 40,
+        ease: "linear",
+      },
+    });
+  }, [containerWidth, controls, isMobile]);
+
+  // Cambio automático de imágenes en escritorio
+  useEffect(() => {
+    if (isMobile) return;
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 5000); // cada 5 segundos
+    return () => clearInterval(interval);
+  }, [isMobile]);
+
+  // Flechas para escritorio
   const handlePrev = (e: React.MouseEvent) => {
     e.stopPropagation();
     setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   };
-
   const handleNext = (e: React.MouseEvent) => {
     e.stopPropagation();
     setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
@@ -107,7 +108,8 @@ export default function PromoBannerScroll() {
   return (
     <section aria-label="Promociones de medicamentos" className="my-6 px-4">
       <div className="block pointer-events-auto max-w-7xl mx-auto">
-        <div className="relative overflow-hidden rounded-[2rem] shadow-2xl bg-gradient-to-r from-slate-900 via-cyan-900 to-slate-900">
+        <div className="relative overflow-hidden rounded-[2.5rem] shadow-2xl bg-gradient-to-r from-slate-900 via-cyan-900 to-slate-900">
+          {/* 📱 Versión móvil */}
           {isMobile ? (
             <motion.div
               className="flex items-center gap-8 py-4"
@@ -118,7 +120,7 @@ export default function PromoBannerScroll() {
                 <div key={i} className="flex-shrink-0 flex items-center justify-center">
                   <img
                     src={src}
-                    className="h-64 md:h-80 w-auto object-contain rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300"
+                    className="h-64 w-auto object-contain rounded-3xl shadow-lg hover:scale-105 transition-transform duration-300"
                     loading="lazy"
                     draggable={false}
                   />
@@ -126,20 +128,21 @@ export default function PromoBannerScroll() {
               ))}
             </motion.div>
           ) : (
-            <div className="relative flex items-center justify-center py-6 gap-10 perspective-1000">
-              {[-2, -1, 0, 1, 2].map((offset) => {
+            // 💻 Versión escritorio
+            <div className="relative flex items-center justify-center py-6 gap-8 perspective-1000">
+              {[-3, -2, -1, 0, 1, 2, 3].map((offset) => {
                 const index = (currentIndex + offset + images.length) % images.length;
                 const isCenter = offset === 0;
-                const scale = isCenter ? 1.2 : 0.9 - Math.abs(offset) * 0.05;
-                const zIndex = isCenter ? 50 : 30 - Math.abs(offset);
-                const opacity = isCenter ? 1 : 0.5;
-                const rotateY = offset * 15;
+                const scale = isCenter ? 1.25 : 0.9 - Math.abs(offset) * 0.05;
+                const zIndex = isCenter ? 50 : 20 - Math.abs(offset);
+                const opacity = isCenter ? 1 : 0.45;
+                const rotateY = offset * 10;
 
                 return (
                   <motion.img
                     key={index}
                     src={images[index].src}
-                    className="w-auto h-72 md:h-80 rounded-3xl shadow-xl object-contain"
+                    className="w-auto h-72 md:h-80 rounded-[2rem] shadow-xl object-contain"
                     style={{
                       zIndex,
                       opacity,
@@ -148,21 +151,21 @@ export default function PromoBannerScroll() {
                     }}
                     loading="lazy"
                     draggable={false}
-                    layout
-                    whileHover={{ scale: isCenter ? 1.25 : scale + 0.05 }}
+                    whileHover={{ scale: isCenter ? 1.3 : scale + 0.05 }}
                   />
                 );
               })}
 
+              {/* Flechas navegación */}
               <button
                 onClick={handlePrev}
-                className="absolute left-6 bg-black/40 text-white p-4 rounded-full hover:bg-black/70 backdrop-blur-sm transition"
+                className="absolute left-6 bg-black/40 text-white p-4 rounded-full hover:bg-black/70 backdrop-blur-sm transition z-50"
               >
                 ←
               </button>
               <button
                 onClick={handleNext}
-                className="absolute right-6 bg-black/40 text-white p-4 rounded-full hover:bg-black/70 backdrop-blur-sm transition"
+                className="absolute right-6 bg-black/40 text-white p-4 rounded-full hover:bg-black/70 backdrop-blur-sm transition z-50"
               >
                 →
               </button>
@@ -170,7 +173,7 @@ export default function PromoBannerScroll() {
           )}
         </div>
 
-        {/* Texto animado debajo */}
+        {/* Texto animado */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
