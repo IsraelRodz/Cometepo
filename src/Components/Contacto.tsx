@@ -58,7 +58,7 @@ const Contacto = () => {
               <FontAwesomeIcon icon={faFacebook} />
             </a>
             <a
-              href="https://wa.me/525625855729"
+              href="https://wa.me/525613143229"
               target="_blank"
               rel="noopener noreferrer"
               className="text-green-500 hover:text-green-700 transition-transform duration-300 ease-in-out transform hover:scale-125"
@@ -82,7 +82,7 @@ const Contacto = () => {
               <FontAwesomeIcon icon={faLinkedin}/>
             </a>
             <a
-             href="tel:+525625855729"
+             href="tel:+525613143229"
              aria-label="Llamar al número +52 5625855729"
             className="text-green-600 hover:text-green-800 transition-transform duration-300 ease-in-out transform hover:scale-125"
             >
