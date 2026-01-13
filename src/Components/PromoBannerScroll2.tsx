@@ -47,31 +47,22 @@ export default function PromoBannerScroll() {
   }, [isMobile]);
 
   return (
-    <section className="px-4 my-16">
+    <section className="px-4 my-20">
       <div className="max-w-7xl mx-auto rounded-[3rem] shadow-2xl bg-gradient-to-br from-slate-900 via-cyan-900 to-slate-900 px-6 py-14">
 
-        {/* ===== TEXTO Y CTA ===== */}
-        <div className="text-center mb-16">
+        {/* ===== TITULO ===== */}
+        <div className="text-center mb-12">
           <h2 className="text-white text-4xl md:text-6xl font-extrabold drop-shadow-xl">
             Promociones especiales
           </h2>
           <p className="text-white/90 text-xl md:text-2xl mt-3">
             en medicamentos
           </p>
-
-          <a
-            href="https://wa.me/525613143229"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block mt-8 bg-green-500 hover:bg-green-600 text-white px-10 py-4 rounded-full text-xl font-bold shadow-xl transition-transform hover:scale-105"
-          >
-            Cotizar por WhatsApp
-          </a>
         </div>
 
         {/* ===== CARRUSEL ===== */}
         {isMobile ? (
-          <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-6 scrollbar-hide">
+          <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-10 scrollbar-hide">
             {images.map((src, i) => (
               <div key={i} className="snap-center shrink-0">
                 <img
@@ -84,7 +75,7 @@ export default function PromoBannerScroll() {
             ))}
           </div>
         ) : (
-          <div className="relative h-[380px] flex justify-center items-center">
+          <div className="relative h-[380px] flex justify-center items-center mb-14">
             {[-2, -1, 0, 1, 2].map((offset) => {
               const index = (current + offset + images.length) % images.length;
               const isCenter = offset === 0;
@@ -108,6 +99,18 @@ export default function PromoBannerScroll() {
             })}
           </div>
         )}
+
+        {/* ===== BOTON ===== */}
+        <div className="text-center">
+          <a
+            href="https://wa.me/525613143229"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-green-500 hover:bg-green-600 text-white px-12 py-4 rounded-full text-xl font-bold shadow-xl transition-transform hover:scale-105"
+          >
+            Cotizar por WhatsApp
+          </a>
+        </div>
       </div>
     </section>
   );
