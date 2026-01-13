@@ -27,7 +27,6 @@ export default function PromoBannerScroll() {
   const [isMobile, setIsMobile] = useState(false);
   const intervalRef = useRef<number | null>(null);
 
-  /* Detectar mobile */
   useEffect(() => {
     const resize = () => setIsMobile(window.innerWidth < 768);
     resize();
@@ -35,7 +34,6 @@ export default function PromoBannerScroll() {
     return () => window.removeEventListener("resize", resize);
   }, []);
 
-  /* Autoplay escritorio */
   useEffect(() => {
     if (isMobile) return;
 
@@ -44,49 +42,52 @@ export default function PromoBannerScroll() {
     }, 4500);
 
     return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
+      if (intervalRef.current) clearInterval(intervalRef.current);
     };
   }, [isMobile]);
 
-  const pause = () => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-  };
-
-  const play = () => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-    intervalRef.current = window.setInterval(() => {
-      setCurrent((prev) => (prev + 1) % images.length);
-    }, 4500);
-  };
-
   return (
-    <section className="px-4 my-12">
-      <div className="max-w-7xl mx-auto rounded-[2.5rem] overflow-hidden shadow-2xl bg-gradient-to-r from-slate-900 via-cyan-900 to-slate-900">
+    <section className="px-4 my-14">
+      <div className="relative max-w-7xl mx-auto rounded-[3rem] overflow-hidden shadow-2xl bg-gradient-to-br from-slate-900 via-cyan-900 to-slate-900">
 
-        {/* 📱 MÓVIL */}
+        {/* ===== TEXTO SUPERIOR ===== */}
+        <div className="absolute inset-0 z-30 flex flex-col items-center justify-center text-center px-6 pointer-events-none">
+          <h2 className="text-white text-4xl md:text-6xl font-extrabold drop-shadow-2xl">
+            Promociones especiales
+          </h2>
+          <p className="text-white/90 text-xl md:text-2xl mt-2">
+            en medicamentos
+          </p>
+
+          <a
+            href="https://wa.me/525613143229"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="pointer-events-auto mt-6 bg-green-500 hover:bg-green-600 text-white px-10 py-4 rounded-full text-xl font-bold shadow-xl transition-transform hover:scale-105"
+          >
+            Cotizar por WhatsApp
+          </a>
+        </div>
+
+        {/* ===== OVERLAY OSCURO ===== */}
+        <div className="absolute inset-0 bg-black/40 z-20" />
+
+        {/* ===== CARRUSEL ===== */}
         {isMobile ? (
-          <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory py-8 px-6 scrollbar-hide">
+          <div className="relative z-10 flex gap-6 overflow-x-auto snap-x snap-mandatory py-16 px-6 scrollbar-hide">
             {images.map((src, i) => (
               <div key={i} className="snap-center shrink-0">
                 <img
                   src={src}
                   alt={`Promoción ${i + 1}`}
-                  className="h-64 w-auto rounded-3xl shadow-xl object-contain"
+                  className="h-64 rounded-3xl shadow-xl object-contain"
                   loading="lazy"
-                  draggable={false}
                 />
               </div>
             ))}
           </div>
         ) : (
-          /* 💻 ESCRITORIO */
-          <div
-            className="relative py-14 flex justify-center items-center perspective-1000"
-            onMouseEnter={pause}
-            onMouseLeave={play}
-          >
+          <div className="relative z-10 py-28 flex justify-center items-center">
             {[-2, -1, 0, 1, 2].map((offset) => {
               const index = (current + offset + images.length) % images.length;
               const isCenter = offset === 0;
@@ -95,12 +96,11 @@ export default function PromoBannerScroll() {
                 <motion.img
                   key={index}
                   src={images[index]}
-                  alt={`Promoción ${index + 1}`}
                   className="absolute h-80 rounded-[2rem] shadow-2xl object-contain"
                   animate={{
-                    x: offset * 260,
+                    x: offset * 280,
                     scale: isCenter ? 1.25 : 0.85,
-                    opacity: isCenter ? 1 : 0.45,
+                    opacity: isCenter ? 1 : 0.4,
                     rotateY: offset * 12,
                   }}
                   transition={{ duration: 0.8, ease: "easeInOut" }}
@@ -109,43 +109,8 @@ export default function PromoBannerScroll() {
                 />
               );
             })}
-
-            {/* Flechas */}
-            <button
-              onClick={() =>
-                setCurrent((c) => (c - 1 + images.length) % images.length)
-              }
-              className="absolute left-6 bg-black/50 text-white p-4 rounded-full hover:bg-black/80 transition z-40"
-            >
-              ←
-            </button>
-
-            <button
-              onClick={() =>
-                setCurrent((c) => (c + 1) % images.length)
-              }
-              className="absolute right-6 bg-black/50 text-white p-4 rounded-full hover:bg-black/80 transition z-40"
-            >
-              →
-            </button>
           </div>
         )}
-
-        {/* Texto */}
-        <div className="text-center pb-12 px-6">
-          <h2 className="text-white text-4xl md:text-5xl font-extrabold drop-shadow-xl">
-            Promociones especiales en medicamentos
-          </h2>
-
-          <a
-            href="https://wa.me/525613143229"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block mt-8 bg-green-500 hover:bg-green-600 text-white px-10 py-4 rounded-full text-xl font-bold shadow-xl transition-transform hover:scale-105"
-          >
-            Cotizar por WhatsApp
-          </a>
-        </div>
       </div>
     </section>
   );
