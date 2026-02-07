@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const promos = [
   {
     src: "/Promo_2/come_1.jpeg",
-    title: "PromociónesVOMIFOS 150MG SOL INY F.A.",
+    title: "VOMIFOS 150MG SOL INY F.A.",
     description: "FOSAPREPITANT 150 MG SOL INY",
   },
   {
