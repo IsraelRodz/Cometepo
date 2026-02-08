@@ -3,94 +3,84 @@ import { motion } from "framer-motion";
 
 const promos = [
   {
-    src: "/Promo_2/come_1.jpeg",
-    title: "VOMIFOS 150MG SOL INY F.A.",
-    description: "FOSAPREPITANT 150 MG SOL INY",
+    src: "/Promo_2/vomifos.jpeg",
+    title: "VOMIFOS 150MG",
+    description: "Fosaprepitant – Solución inyectable",
   },
   {
-    src: "/Promo_2/come_2.jpeg",
-    title: "CLODAP SOL 500MG INY C/FCO AMP",
-    description: "DAPTOMICINA 500 MG SOL INY",
+    src: "/Promo_2/clodap.jpeg",
+    title: "CLODAP 500MG",
+    description: "Daptomicina – Solución inyectable",
   },
   {
-    src: "/Promo_2/come_3.jpeg",
-    title: "NOVAMEXAN 15 UI AMP",
-    description: "BLEOMICINA 15 UI AMP",
+    src: "/Promo_2/lunazol.jpeg",
+    title: "LUNAZOL® 1G",
+    description: "Paracetamol – Solución inyectable",
   },
   {
-    src: "/Promo_2/come_4.jpeg",
-    title: "ONECOBAX 200 M G SOL INY",
-    description: "DACARBAZINA 200 MG SOL INY",
+    src: "/Promo_2/candipres.jpeg",
+    title: "CANDIPRES® 50MG",
+    description: "Amfotericina B – Solución inyectable",
   },
   {
-    src: "/Promo_2/come_5.jpeg",
-    title: "DONECOL®",
-    description: "DEXRAXZOZANO, 500MG SOL INTEC CAJA C/1 AMP",
+    src: "/Promo_2/raifol.jpeg",
+    title: "RIAFOL",
+    description: "Propofol 200 mg / 20 ml",
   },
   {
-    src: "/Promo_2/come_6.jpeg",
-    title: "MEXCIKEM 1 GR SOLINY F.A",
-    description: "CICLOSFOSFAMIDA 1 GR SOL INY",
+    src: "/Promo_2/capecita.jpeg",
+    title: "SKEMCA 500MG",
+    description: "Capecitabina – Caja con 120 tabletas",
   },
   {
-    src: "/Promo_2/come_7.jpeg",
-    title: "MEXCIKEM 200 MG C/5 FC",
-    description: "CICLOSFOSFAMIDA 200 GR SOL INY",
+    src: "/Promo_2/mexcikem.jpeg",
+    title: "MEXCIKEM 200MG",
+    description: "Ciclofosfamida – Solución inyectable",
   },
   {
-    src: "/Promo_2/come_8.jpeg",
-    title: "SENDOXAN 500 MG SOL INY",
-    description: "CICLOFOSFAMIDA",
+    src: "/Promo_2/micofe.jpeg",
+    title: "ACCOCEPT 500MG",
+    description: "Ácido micofenólico – 50 tabletas",
   },
   {
-    src: "/Promo_2/come_9.jpeg",
-    title: "LEUPRORELINA",
-    description: "LORELIN 11.25MG SUSP FA 2ML",
+    src: "/Promo_2/esomeprazol.jpeg",
+    title: "ESOMEPRAZOL 40MG",
+    description: "Tronium IV – Solución inyectable",
   },
   {
-    src: "/Promo_2/come_10.jpeg",
-    title: "LABETALOL",
-    description: "JOYALE-T 100 MG/20ML FC AMP",
+    src: "/Promo_2/rovular.jpeg",
+    title: "ROVULVAR",
+    description: "Bromuro de Rocuronio – 12 frascos",
   },
   {
-    src: "/Promo_2/come_11.jpeg",
-    title: "ESOMEPRAZOL",
-    description: "TRONIUM IV 40 MG SOL INY",
+    src: "/Promo_2/nodescron.jpeg",
+    title: "NODESCRON®",
+    description: "Bromuro de Vecuronio – 50 ampollas",
   },
   {
-    src: "/Promo_2/come_12.jpeg",
-    title: "PISATRINA 160MG/800MG/3ML SOL INY C/6 AMP",
-    description: "TRIMETOPRIMA/SULFAMETOXAZOL 160 MG/800 MG /3 ML C/6 AMP",
+    src: "/Promo_2/ropiva.jpeg",
+    title: "ANDUREST® 7.5MG",
+    description: "Ropivacaina – 5 ampollas",
   },
   {
-    src: "/Promo_2/come_13.jpeg",
-    title: "TIGECICLINA",
-    description: "GECIFHIL 50MG SOL INY",
+    src: "/Promo_2/ropiva_2.jpeg",
+    title: "ANDUREST® 2MG",
+    description: "Ropivacaina – 5 ampollas",
   },
   {
-    src: "/Promo_2/come_14.jpeg",
-    title: "MOXIFLOXACINO",
-    description: "AVELOX 400 MG TAB 7",
+    src: "/Promo_2/ropi.jpeg",
+    title: "NELVIK 150MG",
+    description: "Ropivacaina – Solución inyectable",
   },
   {
-    src: "/Promo_2/come_15.jpeg",
-    title: "VARAMYN®",
-    description: "VANCOMICINA, 1 G CAJA C/1 FCO",
+    src: "/Promo_2/prolia.jpeg",
+    title: "PROLIA",
+    description: "Denosumab 60 mg/ml",
   },
   {
-    src: "/Promo_2/come_16.jpeg",
-    title: "RIVOCILVAR",
-    description: "ACICLOVIR 250 MG C/5 FC",
-  },
-  {
-    src: "/Promo_2/come_17.jpeg",
-    title: "VARAMYN®",
-    description: "VANCOMICINA, 500 MG CAJA C/1 FCO",
-  },
-  {
-    src: "/Promo_2/come_18.jpeg",
+    src: "/Promo_2/esmolol.jpeg",
     title: "ESMOLOL",
-    description: "TIFESOLP 2.5 MG/10 ML C/2 AMP",
+    description: "Tifesolp – 2 ampollas",
   },
 ];
 
@@ -102,6 +92,7 @@ const getWhatsAppLink = (title: string) => {
 export default function PromoBannerScroll() {
   const [current, setCurrent] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [paused, setPaused] = useState(false);
   const intervalRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -112,7 +103,7 @@ export default function PromoBannerScroll() {
   }, []);
 
   useEffect(() => {
-    if (isMobile) return;
+    if (isMobile || paused) return;
 
     intervalRef.current = window.setInterval(() => {
       setCurrent((prev) => (prev + 1) % promos.length);
@@ -121,12 +112,12 @@ export default function PromoBannerScroll() {
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [isMobile]);
+  }, [isMobile, paused]);
 
   return (
     <section className="px-4 my-20">
       <div className="max-w-7xl mx-auto rounded-[3rem] shadow-2xl bg-gradient-to-br from-slate-900 via-cyan-900 to-slate-900 px-6 py-14">
-        {/* ===== TITULO ===== */}
+        {/* Título */}
         <div className="text-center mb-12">
           <h2 className="text-white text-4xl md:text-6xl font-extrabold drop-shadow-xl">
             Promociones especiales
@@ -136,26 +127,26 @@ export default function PromoBannerScroll() {
           </p>
         </div>
 
-        {/* ===== CARRUSEL ===== */}
+        {/* Móvil */}
         {isMobile ? (
           <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-10 scrollbar-hide">
             {promos.map((promo, i) => (
-              <div
+              <motion.div
                 key={i}
-                className="snap-center shrink-0 w-72 bg-white rounded-3xl shadow-xl p-4 flex flex-col items-center"
+                whileHover={{ scale: 1.03 }}
+                className="snap-center shrink-0 w-72 bg-white/80 backdrop-blur-md border border-white/40 rounded-3xl shadow-xl p-5 flex flex-col items-center"
               >
                 <img
                   src={promo.src}
                   alt={promo.title}
-                  className="h-56 object-contain mb-4"
-                  loading="lazy"
+                  className="h-56 object-contain mb-3 drop-shadow-md"
                 />
 
-                <h3 className="text-lg font-bold text-gray-800 text-center">
+                <h3 className="text-xl font-extrabold text-gray-800 text-center leading-tight">
                   {promo.title}
                 </h3>
 
-                <p className="text-sm text-gray-600 text-center mt-1">
+                <p className="text-sm text-gray-500 text-center mt-1">
                   {promo.description}
                 </p>
 
@@ -163,15 +154,20 @@ export default function PromoBannerScroll() {
                   href={getWhatsAppLink(promo.title)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full font-semibold"
+                  className="mt-4 w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-xl font-bold shadow-lg text-center"
                 >
                   Cotizar por WhatsApp
                 </a>
-              </div>
+              </motion.div>
             ))}
           </div>
         ) : (
-          <div className="relative h-[460px] flex justify-center items-center mb-14">
+          /* Escritorio */
+          <div
+            className="relative h-[520px] flex justify-center items-center mb-10"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+          >
             {[-2, -1, 0, 1, 2].map((offset) => {
               const index = (current + offset + promos.length) % promos.length;
               const promo = promos[index];
@@ -180,11 +176,11 @@ export default function PromoBannerScroll() {
               return (
                 <motion.div
                   key={index}
-                  className="absolute flex flex-col items-center"
+                  className="absolute flex flex-col items-center cursor-pointer"
                   animate={{
-                    x: offset * 300,
+                    x: offset * 320,
                     scale: isCenter ? 1.15 : 0.85,
-                    opacity: isCenter ? 1 : 0.3,
+                    opacity: isCenter ? 1 : 0.25,
                   }}
                   transition={{ duration: 0.8 }}
                   style={{ zIndex: isCenter ? 20 : 10 }}
@@ -197,11 +193,11 @@ export default function PromoBannerScroll() {
                   />
 
                   {isCenter && (
-                    <div className="mt-4 text-center bg-white/90 backdrop-blur rounded-2xl p-4 w-80 shadow-xl">
-                      <h3 className="text-xl font-bold text-gray-800">
+                    <div className="mt-4 text-center bg-white/85 backdrop-blur-md border border-white/40 rounded-2xl p-5 w-96 shadow-2xl">
+                      <h3 className="text-2xl font-extrabold text-gray-800">
                         {promo.title}
                       </h3>
-                      <p className="text-gray-600 text-sm mt-1">
+                      <p className="text-gray-500 mt-1">
                         {promo.description}
                       </p>
 
@@ -209,7 +205,7 @@ export default function PromoBannerScroll() {
                         href={getWhatsAppLink(promo.title)}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-3 inline-block bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full font-semibold"
+                        className="mt-4 w-full inline-block bg-green-500 hover:bg-green-600 text-white py-3 rounded-xl font-bold shadow-lg"
                       >
                         Cotizar por WhatsApp
                       </a>
@@ -220,6 +216,18 @@ export default function PromoBannerScroll() {
             })}
           </div>
         )}
+
+        {/* Indicadores */}
+        <div className="flex justify-center gap-2 mt-6">
+          {promos.map((_, i) => (
+            <div
+              key={i}
+              className={`h-2 w-2 rounded-full ${
+                i === current ? "bg-white" : "bg-white/30"
+              }`}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
