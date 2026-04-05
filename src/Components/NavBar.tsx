@@ -36,7 +36,7 @@ const Navbar = () => {
           ComeTepo
         </a>
 
-        {/* DESKTOP */}
+        {/* DESKTOP  para las promos*/}
         <ul className="hidden md:flex gap-6 text-lg items-center">
           <li><a href="#nosotros" className="hover:text-blue-500">Nosotros</a></li>
           <li><a href="#misionvision" className="hover:text-blue-500">Misión</a></li>
