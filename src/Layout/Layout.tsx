@@ -7,7 +7,7 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div className="bg-black text-white min-h-screen font-sans">
+    <div className="font-sans bg-black text-white min-h-screen">
       <NavBar />
 
       <main className="pt-24 px-4 md:px-10">
