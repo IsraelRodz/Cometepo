@@ -1,59 +1,123 @@
+// src/components/Navbar.tsx
 import { useState } from 'react';
-import { FaBars, FaTimes, FaCapsules } from 'react-icons/fa';
+import {
+  FaUserFriends,
+  FaEye,
+  FaTruck,
+  FaConciergeBell,
+  FaEnvelope,
+  FaCapsules,
+  FaBars,
+  FaTimes,
+} from 'react-icons/fa';
 
-const links = [
-  { name: 'Inicio', href: '#principal' },
-  { name: 'Promos', href: '#promos' }, // 🔥 NUEVO
-  { name: 'Nosotros', href: '#nosotros' },
-  { name: 'Servicios', href: '#servicios' },
-  { name: 'Proveedores', href: '#proveedores' },
-  { name: 'Contacto', href: '#contacto' },
-];
+const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
 
-export default function Navbar() {
-  const [open, setOpen] = useState(false);
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
 
   return (
-    <nav className="fixed w-full z-50 bg-black/70 backdrop-blur-lg border-b border-white/10">
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
-        
-        {/* Logo */}
-        <a href="#principal" className="flex items-center gap-2 text-xl font-bold">
-          <FaCapsules className="text-red-500" />
-          <span>ComeTepo</span>
+    <nav className="bg-white/80 backdrop-blur-md shadow-md fixed w-full z-50 font-medium text-blue-800">
+      <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+        <a
+          href="#principal"
+          className="text-2xl md:text-3xl font-extrabold tracking-wide cursor-pointer transition-transform hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 flex items-center gap-3"
+        >
+          <img
+            src="/Laboratorios/COME.jpeg"
+            alt="Logo"
+            className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover border-2 border-blue-300 shadow-lg transition-transform duration-300 hover:scale-110 dark:border-cyan-400"
+          />
+          <span className="flex items-center gap-1">
+            <span className="text-blue-600">Come</span>
+            <FaCapsules className="text-cyan-500 text-xl md:text-2xl animate-pulseSlow" />
+            <span className="text-cyan-500">Tepo</span>
+          </span>
         </a>
 
-        {/* Desktop */}
-        <ul className="hidden md:flex gap-8">
-          {links.map((link) => (
-            <li key={link.name}>
-              <a
-                href={link.href}
-                className="hover:text-red-500 transition relative group"
-              >
-                {link.name}
-                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-red-500 group-hover:w-full transition-all"></span>
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="md:hidden">
+          <button
+            onClick={toggleMenu}
+            className="text-2xl text-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+            aria-label="Toggle Menu"
+          >
+            {menuOpen ? <FaTimes /> : <FaBars />}
+          </button>
+        </div>
 
-        {/* Mobile Button */}
-        <button onClick={() => setOpen(!open)} className="md:hidden text-2xl">
-          {open ? <FaTimes /> : <FaBars />}
-        </button>
+        <ul className="hidden md:flex gap-6 text-lg">
+          <li>
+            <a
+              href="#nosotros"
+              className="flex items-center gap-2 transition-all duration-300 hover:text-blue-500 hover:underline hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+            >
+              <FaUserFriends /> Nosotros
+            </a>
+          </li>
+          <li>
+            <a
+              href="#misionvision"
+              className="flex items-center gap-2 transition-all duration-300 hover:text-blue-500 hover:underline hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+            >
+              <FaEye /> Misión y Visión
+            </a>
+          </li>
+          <li>
+            <a
+              href="#servicios"
+              className="flex items-center gap-2 transition-all duration-300 hover:text-blue-500 hover:underline hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+            >
+              <FaConciergeBell /> Servicios
+            </a>
+          </li>
+          <li>
+            <a
+              href="#proveedores"
+              className="flex items-center gap-2 transition-all duration-300 hover:text-blue-500 hover:underline hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+            >
+              <FaTruck /> Proveedores
+            </a>
+          </li>
+          
+          <li>
+            <a
+              href="#contacto"
+              className="flex items-center gap-2 transition-all duration-300 hover:text-blue-500 hover:underline hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+            >
+              <FaEnvelope /> Contáctanos
+            </a>
+          </li>
+        </ul>
       </div>
 
       {/* Mobile Menu */}
-      {open && (
-        <div className="md:hidden bg-black/95 px-6 pb-6 space-y-4">
-          {links.map((link) => (
-            <a key={link.name} href={link.href} onClick={() => setOpen(false)} className="block">
-              {link.name}
-            </a>
-          ))}
-        </div>
+      {menuOpen && (
+        <ul className="md:hidden px-6 pb-4 pt-2 space-y-4 text-lg bg-white shadow-md">
+          <li>
+            <a onClick={closeMenu} href="#nosotros" className="block">Nosotros</a>
+          </li>
+          <li>
+            <a onClick={closeMenu} href="#misionvision" className="block">Misión y Visión</a>
+          </li>
+          <li>
+            <a onClick={closeMenu} href="#servicios" className="block">Servicios</a>
+          </li>
+          <li>
+            <a onClick={closeMenu} href="#proveedores" className="block">Proveedores</a>
+          </li>
+          <li>
+            <a onClick={closeMenu} href="#contacto" className="block">Contáctanos</a>
+          </li>
+        </ul>
       )}
     </nav>
   );
-}
+};
+
+export default Navbar;
