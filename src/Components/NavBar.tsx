@@ -10,6 +10,7 @@ import {
   FaBars,
   FaTimes,
   FaTags,
+  FaFileExcel,
 } from 'react-icons/fa';
 
 const Navbar = () => {
@@ -58,56 +59,51 @@ const Navbar = () => {
         {/* MENÚ DESKTOP */}
         <ul className="hidden md:flex gap-6 text-lg items-center">
           <li>
-            <a
-              href="#nosotros"
-              className="flex items-center gap-2 transition-all duration-300 hover:text-blue-500 hover:underline hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
-            >
+            <a href="#nosotros" className="flex items-center gap-2 hover:text-blue-500 hover:underline hover:scale-105 transition-all">
               <FaUserFriends /> Nosotros
             </a>
           </li>
 
           <li>
-            <a
-              href="#misionvision"
-              className="flex items-center gap-2 transition-all duration-300 hover:text-blue-500 hover:underline hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
-            >
+            <a href="#misionvision" className="flex items-center gap-2 hover:text-blue-500 hover:underline hover:scale-105 transition-all">
               <FaEye /> Misión y Visión
             </a>
           </li>
 
           <li>
-            <a
-              href="#servicios"
-              className="flex items-center gap-2 transition-all duration-300 hover:text-blue-500 hover:underline hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
-            >
+            <a href="#servicios" className="flex items-center gap-2 hover:text-blue-500 hover:underline hover:scale-105 transition-all">
               <FaConciergeBell /> Servicios
             </a>
           </li>
 
           <li>
-            <a
-              href="#proveedores"
-              className="flex items-center gap-2 transition-all duration-300 hover:text-blue-500 hover:underline hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
-            >
+            <a href="#proveedores" className="flex items-center gap-2 hover:text-blue-500 hover:underline hover:scale-105 transition-all">
               <FaTruck /> Proveedores
             </a>
           </li>
 
-          {/* 🔥 PROMOCIONES DESTACADO */}
+          {/* 🟢 CATÁLOGO */}
+          <li>
+            <a
+              href="#catalogo"
+              className="flex items-center gap-2 px-3 py-1 rounded-full bg-green-500 text-white shadow-md hover:scale-110 transition-all"
+            >
+              <FaFileExcel /> Catálogo
+            </a>
+          </li>
+
+          {/* 🔥 PROMOCIONES */}
           <li>
             <a
               href="#promociones"
-              className="flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-md hover:scale-110 transition-all duration-300"
+              className="flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-md hover:scale-110 transition-all"
             >
               <FaTags /> Promociones
             </a>
           </li>
 
           <li>
-            <a
-              href="#contacto"
-              className="flex items-center gap-2 transition-all duration-300 hover:text-blue-500 hover:underline hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
-            >
+            <a href="#contacto" className="flex items-center gap-2 hover:text-blue-500 hover:underline hover:scale-105 transition-all">
               <FaEnvelope /> Contáctanos
             </a>
           </li>
@@ -128,6 +124,17 @@ const Navbar = () => {
           </li>
           <li>
             <a onClick={closeMenu} href="#proveedores" className="block">Proveedores</a>
+          </li>
+
+          {/* CATÁLOGO MOBILE */}
+          <li>
+            <a
+              onClick={closeMenu}
+              href="#catalogo"
+              className="block font-semibold text-green-600"
+            >
+              Catálogo 📊
+            </a>
           </li>
 
           {/* PROMOCIONES MOBILE */}
