@@ -3,7 +3,7 @@ import * as XLSX from "xlsx";
 import { FaFileExcel, FaDownload } from "react-icons/fa";
 
 export default function ExcelViewer() {
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<any[][]>([]);
   const [headers, setHeaders] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -23,10 +23,10 @@ export default function ExcelViewer() {
         const sheet = workbook.Sheets[workbook.SheetNames[0]];
         const json = XLSX.utils.sheet_to_json(sheet, { header: 1 });
 
-        const [headerRow, ...rows] = json as any[];
+        const [headerRow = [], ...rows] = json as any[];
 
-        setHeaders(headerRow || []);
-        setData(rows || []);
+        setHeaders(headerRow);
+        setData(rows);
       } catch (err) {
         console.error("Error cargando Excel:", err);
         setError(true);
@@ -60,31 +60,34 @@ export default function ExcelViewer() {
           </a>
         </div>
 
-        {/* ESTADOS */}
+        {/* LOADING */}
         {loading && (
-          <div className="text-center py-10 text-gray-500">
-            Cargando catálogo...
+          <div className="flex justify-center items-center py-16">
+            <div className="animate-pulse text-gray-500 text-lg">
+              Cargando catálogo...
+            </div>
           </div>
         )}
 
+        {/* ERROR */}
         {error && (
-          <div className="text-center py-10 text-red-500">
-            Error al cargar el archivo Excel
+          <div className="text-center py-10 text-red-500 font-semibold">
+            ❌ Error al cargar el catálogo
           </div>
         )}
 
         {/* TABLA */}
-        {!loading && !error && (
+        {!loading && !error && headers.length > 0 && (
           <div className="overflow-auto max-h-[600px] border rounded-xl">
-            <table className="min-w-full text-sm text-left">
-              
+            <table className="min-w-full text-sm text-center">
+
               {/* HEADERS */}
-              <thead className="bg-gray-100 sticky top-0 z-10">
+              <thead className="bg-gray-200 sticky top-0 z-10">
                 <tr>
                   {headers.map((h, i) => (
                     <th
                       key={i}
-                      className="px-4 py-2 font-bold text-gray-700 whitespace-nowrap"
+                      className="px-4 py-3 font-bold text-gray-700 whitespace-nowrap"
                     >
                       {h}
                     </th>
@@ -97,7 +100,9 @@ export default function ExcelViewer() {
                 {data.map((row, i) => (
                   <tr
                     key={i}
-                    className="border-t hover:bg-gray-50 transition"
+                    className={`border-t transition ${
+                      i % 2 === 0 ? "bg-white" : "bg-gray-50"
+                    } hover:bg-blue-50`}
                   >
                     {headers.map((_, j) => (
                       <td
@@ -112,6 +117,13 @@ export default function ExcelViewer() {
               </tbody>
 
             </table>
+          </div>
+        )}
+
+        {/* SIN DATOS */}
+        {!loading && !error && headers.length === 0 && (
+          <div className="text-center py-10 text-gray-500">
+            No hay datos disponibles
           </div>
         )}
 
