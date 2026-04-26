@@ -23,7 +23,7 @@ export default function ExcelViewer() {
   }, []);
 
   return (
-    <section id="catalogo" className="px-4 my-20 scroll-mt-24">
+    <section id="catalogo" className="px-4 my-20 scroll-mt-32">
       <div className="max-w-7xl mx-auto bg-white rounded-3xl shadow-2xl p-6">
 
         {/* HEADER */}

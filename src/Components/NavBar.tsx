@@ -1,5 +1,5 @@
 // src/components/Navbar.tsx
-import { useState } from 'react';
+import { useEffect, useState } from "react";
 import {
   FaUserFriends,
   FaEye,
@@ -11,146 +11,160 @@ import {
   FaTimes,
   FaTags,
   FaFileExcel,
-} from 'react-icons/fa';
+} from "react-icons/fa";
+
+const sections = [
+  "nosotros",
+  "misionvision",
+  "servicios",
+  "proveedores",
+  "catalogo",
+  "promociones",
+  "contacto",
+];
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [active, setActive] = useState("nosotros");
+  const [scrolled, setScrolled] = useState(false);
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+  // Detectar sección activa
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
 
-  const closeMenu = () => {
+      let current = "nosotros";
+      sections.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) {
+          const offset = el.offsetTop - 140;
+          if (window.scrollY >= offset) {
+            current = id;
+          }
+        }
+      });
+      setActive(current);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Scroll suave con offset
+  const handleScrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      window.scrollTo({
+        top: el.offsetTop - 120,
+        behavior: "smooth",
+      });
+    }
     setMenuOpen(false);
   };
 
+  const linkClass = (id: string) =>
+    `flex items-center gap-2 px-2 py-1 transition-all duration-300 ${
+      active === id
+        ? "text-blue-600 font-bold scale-105"
+        : "hover:text-blue-500 hover:scale-105"
+    }`;
+
   return (
-    <nav className="bg-white/80 backdrop-blur-md shadow-md fixed w-full z-50 font-medium text-blue-800">
-      <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+    <nav
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-white/90 backdrop-blur-lg shadow-lg py-2"
+          : "bg-white/80 backdrop-blur-md py-4"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
         
         {/* LOGO */}
-        <a
-          href="#principal"
-          className="text-2xl md:text-3xl font-extrabold tracking-wide cursor-pointer transition-transform hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 flex items-center gap-3"
+        <div
+          onClick={() => handleScrollTo("principal")}
+          className="text-2xl md:text-3xl font-extrabold cursor-pointer flex items-center gap-3 hover:scale-105 transition"
         >
           <img
             src="/Laboratorios/COME.jpeg"
-            alt="Logo"
-            className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover border-2 border-blue-300 shadow-lg transition-transform duration-300 hover:scale-110 dark:border-cyan-400"
+            className="w-10 h-10 rounded-full border-2 border-blue-300 shadow"
           />
           <span className="flex items-center gap-1">
             <span className="text-blue-600">Come</span>
-            <FaCapsules className="text-cyan-500 text-xl md:text-2xl animate-pulseSlow" />
+            <FaCapsules className="text-cyan-500 animate-pulse" />
             <span className="text-cyan-500">Tepo</span>
           </span>
-        </a>
-
-        {/* BOTÓN MOBILE */}
-        <div className="md:hidden">
-          <button
-            onClick={toggleMenu}
-            className="text-2xl text-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
-            aria-label="Toggle Menu"
-          >
-            {menuOpen ? <FaTimes /> : <FaBars />}
-          </button>
         </div>
 
-        {/* MENÚ DESKTOP */}
-        <ul className="hidden md:flex gap-6 text-lg items-center">
-          <li>
-            <a href="#nosotros" className="flex items-center gap-2 hover:text-blue-500 hover:underline hover:scale-105 transition-all">
-              <FaUserFriends /> Nosotros
-            </a>
+        {/* MOBILE BTN */}
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="md:hidden text-2xl"
+        >
+          {menuOpen ? <FaTimes /> : <FaBars />}
+        </button>
+
+        {/* DESKTOP */}
+        <ul className="hidden md:flex items-center gap-5 text-sm lg:text-base">
+          <li onClick={() => handleScrollTo("nosotros")} className={linkClass("nosotros")}>
+            <FaUserFriends /> Nosotros
           </li>
 
-          <li>
-            <a href="#misionvision" className="flex items-center gap-2 hover:text-blue-500 hover:underline hover:scale-105 transition-all">
-              <FaEye /> Misión y Visión
-            </a>
+          <li onClick={() => handleScrollTo("misionvision")} className={linkClass("misionvision")}>
+            <FaEye /> Misión
           </li>
 
-          <li>
-            <a href="#servicios" className="flex items-center gap-2 hover:text-blue-500 hover:underline hover:scale-105 transition-all">
-              <FaConciergeBell /> Servicios
-            </a>
+          <li onClick={() => handleScrollTo("servicios")} className={linkClass("servicios")}>
+            <FaConciergeBell /> Servicios
           </li>
 
-          <li>
-            <a href="#proveedores" className="flex items-center gap-2 hover:text-blue-500 hover:underline hover:scale-105 transition-all">
-              <FaTruck /> Proveedores
-            </a>
+          <li onClick={() => handleScrollTo("proveedores")} className={linkClass("proveedores")}>
+            <FaTruck /> Proveedores
           </li>
 
-          {/* 🟢 CATÁLOGO */}
-          <li>
-            <a
-              href="#catalogo"
-              className="flex items-center gap-2 px-3 py-1 rounded-full bg-green-500 text-white shadow-md hover:scale-110 transition-all"
+          {/* CATÁLOGO */}
+          <li onClick={() => handleScrollTo("catalogo")}>
+            <span
+              className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-white shadow-md transition ${
+                active === "catalogo"
+                  ? "bg-green-700 scale-105"
+                  : "bg-green-500 hover:bg-green-600"
+              }`}
             >
               <FaFileExcel /> Catálogo
-            </a>
+            </span>
           </li>
 
-          {/* 🔥 PROMOCIONES */}
-          <li>
-            <a
-              href="#promociones"
-              className="flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-md hover:scale-110 transition-all"
+          {/* PROMOS */}
+          <li onClick={() => handleScrollTo("promociones")}>
+            <span
+              className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-white shadow-md transition ${
+                active === "promociones"
+                  ? "bg-blue-700 scale-105"
+                  : "bg-gradient-to-r from-cyan-500 to-blue-500"
+              }`}
             >
-              <FaTags /> Promociones
-            </a>
+              <FaTags /> Promos
+            </span>
           </li>
 
-          <li>
-            <a href="#contacto" className="flex items-center gap-2 hover:text-blue-500 hover:underline hover:scale-105 transition-all">
-              <FaEnvelope /> Contáctanos
-            </a>
+          <li onClick={() => handleScrollTo("contacto")} className={linkClass("contacto")}>
+            <FaEnvelope /> Contacto
           </li>
         </ul>
       </div>
 
-      {/* MENÚ MOBILE */}
+      {/* MOBILE MENU */}
       {menuOpen && (
-        <ul className="md:hidden px-6 pb-4 pt-2 space-y-4 text-lg bg-white shadow-md">
-          <li>
-            <a onClick={closeMenu} href="#nosotros" className="block">Nosotros</a>
-          </li>
-          <li>
-            <a onClick={closeMenu} href="#misionvision" className="block">Misión y Visión</a>
-          </li>
-          <li>
-            <a onClick={closeMenu} href="#servicios" className="block">Servicios</a>
-          </li>
-          <li>
-            <a onClick={closeMenu} href="#proveedores" className="block">Proveedores</a>
-          </li>
-
-          {/* CATÁLOGO MOBILE */}
-          <li>
-            <a
-              onClick={closeMenu}
-              href="#catalogo"
-              className="block font-semibold text-green-600"
+        <ul className="md:hidden px-6 pb-4 pt-2 space-y-4 bg-white shadow-md">
+          {sections.map((sec) => (
+            <li
+              key={sec}
+              onClick={() => handleScrollTo(sec)}
+              className="capitalize cursor-pointer"
             >
-              Catálogo 📊
-            </a>
-          </li>
-
-          {/* PROMOCIONES MOBILE */}
-          <li>
-            <a
-              onClick={closeMenu}
-              href="#promociones"
-              className="block font-semibold text-blue-600"
-            >
-              Promociones 🔥
-            </a>
-          </li>
-
-          <li>
-            <a onClick={closeMenu} href="#contacto" className="block">Contáctanos</a>
-          </li>
+              {sec}
+            </li>
+          ))}
         </ul>
       )}
     </nav>
