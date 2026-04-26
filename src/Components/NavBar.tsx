@@ -9,6 +9,7 @@ import {
   FaCapsules,
   FaBars,
   FaTimes,
+  FaTags,
 } from 'react-icons/fa';
 
 const Navbar = () => {
@@ -25,6 +26,8 @@ const Navbar = () => {
   return (
     <nav className="bg-white/80 backdrop-blur-md shadow-md fixed w-full z-50 font-medium text-blue-800">
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+        
+        {/* LOGO */}
         <a
           href="#principal"
           className="text-2xl md:text-3xl font-extrabold tracking-wide cursor-pointer transition-transform hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 flex items-center gap-3"
@@ -41,6 +44,7 @@ const Navbar = () => {
           </span>
         </a>
 
+        {/* BOTÓN MOBILE */}
         <div className="md:hidden">
           <button
             onClick={toggleMenu}
@@ -51,7 +55,8 @@ const Navbar = () => {
           </button>
         </div>
 
-        <ul className="hidden md:flex gap-6 text-lg">
+        {/* MENÚ DESKTOP */}
+        <ul className="hidden md:flex gap-6 text-lg items-center">
           <li>
             <a
               href="#nosotros"
@@ -60,6 +65,7 @@ const Navbar = () => {
               <FaUserFriends /> Nosotros
             </a>
           </li>
+
           <li>
             <a
               href="#misionvision"
@@ -68,6 +74,7 @@ const Navbar = () => {
               <FaEye /> Misión y Visión
             </a>
           </li>
+
           <li>
             <a
               href="#servicios"
@@ -76,6 +83,7 @@ const Navbar = () => {
               <FaConciergeBell /> Servicios
             </a>
           </li>
+
           <li>
             <a
               href="#proveedores"
@@ -84,7 +92,17 @@ const Navbar = () => {
               <FaTruck /> Proveedores
             </a>
           </li>
-          
+
+          {/* 🔥 PROMOCIONES DESTACADO */}
+          <li>
+            <a
+              href="#promociones"
+              className="flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-md hover:scale-110 transition-all duration-300"
+            >
+              <FaTags /> Promociones
+            </a>
+          </li>
+
           <li>
             <a
               href="#contacto"
@@ -96,7 +114,7 @@ const Navbar = () => {
         </ul>
       </div>
 
-      {/* Mobile Menu */}
+      {/* MENÚ MOBILE */}
       {menuOpen && (
         <ul className="md:hidden px-6 pb-4 pt-2 space-y-4 text-lg bg-white shadow-md">
           <li>
@@ -111,6 +129,18 @@ const Navbar = () => {
           <li>
             <a onClick={closeMenu} href="#proveedores" className="block">Proveedores</a>
           </li>
+
+          {/* PROMOCIONES MOBILE */}
+          <li>
+            <a
+              onClick={closeMenu}
+              href="#promociones"
+              className="block font-semibold text-blue-600"
+            >
+              Promociones 🔥
+            </a>
+          </li>
+
           <li>
             <a onClick={closeMenu} href="#contacto" className="block">Contáctanos</a>
           </li>
