@@ -5,21 +5,37 @@ import { FaFileExcel, FaDownload } from "react-icons/fa";
 export default function ExcelViewer() {
   const [data, setData] = useState<any[]>([]);
   const [headers, setHeaders] = useState<string[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
   const fileUrl = "/docs/inventario.xlsx";
 
   useEffect(() => {
-    fetch(fileUrl)
-      .then((res) => res.arrayBuffer())
-      .then((ab) => {
+    const loadExcel = async () => {
+      try {
+        setLoading(true);
+
+        const res = await fetch(fileUrl);
+        if (!res.ok) throw new Error("No se pudo cargar el archivo");
+
+        const ab = await res.arrayBuffer();
         const workbook = XLSX.read(ab, { type: "array" });
         const sheet = workbook.Sheets[workbook.SheetNames[0]];
         const json = XLSX.utils.sheet_to_json(sheet, { header: 1 });
 
         const [headerRow, ...rows] = json as any[];
 
-        setHeaders(headerRow);
-        setData(rows);
-      });
+        setHeaders(headerRow || []);
+        setData(rows || []);
+      } catch (err) {
+        console.error("Error cargando Excel:", err);
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadExcel();
   }, []);
 
   return (
@@ -44,36 +60,60 @@ export default function ExcelViewer() {
           </a>
         </div>
 
-        {/* TABLA */}
-        <div className="overflow-auto max-h-[600px] border rounded-xl">
-          <table className="min-w-full text-sm text-left">
-            
-            {/* HEADERS */}
-            <thead className="bg-gray-100 sticky top-0">
-              <tr>
-                {headers.map((h, i) => (
-                  <th key={i} className="px-4 py-2 font-bold text-gray-700">
-                    {h}
-                  </th>
-                ))}
-              </tr>
-            </thead>
+        {/* ESTADOS */}
+        {loading && (
+          <div className="text-center py-10 text-gray-500">
+            Cargando catálogo...
+          </div>
+        )}
 
-            {/* BODY */}
-            <tbody>
-              {data.map((row, i) => (
-                <tr key={i} className="border-t hover:bg-gray-50">
-                  {headers.map((_, j) => (
-                    <td key={j} className="px-4 py-2">
-                      {row[j]}
-                    </td>
+        {error && (
+          <div className="text-center py-10 text-red-500">
+            Error al cargar el archivo Excel
+          </div>
+        )}
+
+        {/* TABLA */}
+        {!loading && !error && (
+          <div className="overflow-auto max-h-[600px] border rounded-xl">
+            <table className="min-w-full text-sm text-left">
+              
+              {/* HEADERS */}
+              <thead className="bg-gray-100 sticky top-0 z-10">
+                <tr>
+                  {headers.map((h, i) => (
+                    <th
+                      key={i}
+                      className="px-4 py-2 font-bold text-gray-700 whitespace-nowrap"
+                    >
+                      {h}
+                    </th>
                   ))}
                 </tr>
-              ))}
-            </tbody>
+              </thead>
 
-          </table>
-        </div>
+              {/* BODY */}
+              <tbody>
+                {data.map((row, i) => (
+                  <tr
+                    key={i}
+                    className="border-t hover:bg-gray-50 transition"
+                  >
+                    {headers.map((_, j) => (
+                      <td
+                        key={j}
+                        className="px-4 py-2 whitespace-nowrap"
+                      >
+                        {row[j] ?? "-"}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+
+            </table>
+          </div>
+        )}
 
       </div>
     </section>
