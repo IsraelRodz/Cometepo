@@ -115,8 +115,10 @@ export default function PromoBannerScroll() {
   }, [isMobile, paused]);
 
   return (
-    <section className="px-4 my-20">
+    // 🔥 AQUÍ ESTÁ LA CLAVE
+    <section id="promociones" className="px-4 my-20 scroll-mt-24">
       <div className="max-w-7xl mx-auto rounded-[3rem] shadow-2xl bg-gradient-to-br from-slate-900 via-cyan-900 to-slate-900 px-6 py-14">
+        
         {/* Título */}
         <div className="text-center mb-12">
           <h2 className="text-white text-4xl md:text-6xl font-extrabold drop-shadow-xl">
