@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import * as XLSX from "xlsx";
-import { FaFileExcel, FaDownload } from "react-icons/fa";
+import { FaFileExcel, FaSearch } from "react-icons/fa";
 
 export default function ExcelViewer() {
   const [data, setData] = useState<any[][]>([]);
   const [headers, setHeaders] = useState<string[]>([]);
+  const [filteredData, setFilteredData] = useState<any[][]>([]);
+  const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
@@ -27,8 +29,9 @@ export default function ExcelViewer() {
 
         setHeaders(headerRow);
         setData(rows);
+        setFilteredData(rows);
       } catch (err) {
-        console.error("Error cargando Excel:", err);
+        console.error(err);
         setError(true);
       } finally {
         setLoading(false);
@@ -38,26 +41,50 @@ export default function ExcelViewer() {
     loadExcel();
   }, []);
 
+  // 🔍 FILTRO EN TIEMPO REAL
+  useEffect(() => {
+    if (!search.trim()) {
+      setFilteredData(data);
+      return;
+    }
+
+    const lowerSearch = search.toLowerCase();
+
+    const filtered = data.filter((row) =>
+      row.some((cell) =>
+        String(cell).toLowerCase().includes(lowerSearch)
+      )
+    );
+
+    setFilteredData(filtered);
+  }, [search, data]);
+
   return (
     <section id="catalogo" className="px-4 my-20 scroll-mt-32">
       <div className="max-w-7xl mx-auto bg-white rounded-3xl shadow-2xl p-6">
 
         {/* HEADER */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
+
+          {/* TÍTULO */}
           <div className="flex items-center gap-3">
             <FaFileExcel className="text-green-600 text-3xl" />
             <h2 className="text-2xl md:text-3xl font-extrabold text-gray-800">
-              Inventario de medicamentos
+              Catálogo de medicamentos
             </h2>
           </div>
 
-          <a
-            href={fileUrl}
-            download
-            className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-xl font-bold shadow-md transition"
-          >
-            <FaDownload /> Descargar Excel
-          </a>
+          {/* 🔍 BUSCADOR */}
+          <div className="relative w-full md:w-96">
+            <FaSearch className="absolute left-3 top-3 text-gray-400" />
+            <input
+              type="text"
+              placeholder="Buscar medicamento..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full pl-10 pr-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm"
+            />
+          </div>
         </div>
 
         {/* LOADING */}
@@ -97,7 +124,7 @@ export default function ExcelViewer() {
 
               {/* BODY */}
               <tbody>
-                {data.map((row, i) => (
+                {filteredData.map((row, i) => (
                   <tr
                     key={i}
                     className={`border-t transition ${
@@ -105,10 +132,7 @@ export default function ExcelViewer() {
                     } hover:bg-blue-50`}
                   >
                     {headers.map((_, j) => (
-                      <td
-                        key={j}
-                        className="px-4 py-2 whitespace-nowrap"
-                      >
+                      <td key={j} className="px-4 py-2 whitespace-nowrap">
                         {row[j] ?? "-"}
                       </td>
                     ))}
@@ -120,10 +144,10 @@ export default function ExcelViewer() {
           </div>
         )}
 
-        {/* SIN DATOS */}
-        {!loading && !error && headers.length === 0 && (
+        {/* SIN RESULTADOS */}
+        {!loading && !error && filteredData.length === 0 && (
           <div className="text-center py-10 text-gray-500">
-            No hay datos disponibles
+            No se encontraron resultados 🔍
           </div>
         )}
 

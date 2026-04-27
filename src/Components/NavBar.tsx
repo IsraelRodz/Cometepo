@@ -13,12 +13,13 @@ import {
   FaFileExcel,
 } from "react-icons/fa";
 
-const sections = [
+const sections = 
+[
   "nosotros",
-  "misionvision",
+  "misión y visión",
   "servicios",
   "proveedores",
-  "catalogo",
+  "catálogo",
   "promociones",
   "contacto",
 ];
