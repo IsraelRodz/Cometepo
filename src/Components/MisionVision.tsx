@@ -5,7 +5,7 @@ import { FaBullseye, FaEye, FaHeartbeat } from 'react-icons/fa';
 const MisionVision = () => {
   return (
     <section
-      id="misionvision"
+      id="misión y visión"
       className="bg-blue-50 rounded-2xl py-16 px-6 md:px-20 text-center shadow-md"
     >
       <h2 className="text-5xl font-extrabold text-blue-700 mb-12 font-serif tracking-wide">
