@@ -110,7 +110,7 @@ const Navbar = () => {
             <FaUserFriends /> Nosotros
           </li>
 
-          <li onClick={() => handleScrollTo("misionvision")} className={linkClass("misionvision")}>
+          <li onClick={() => handleScrollTo("misión y visión")} className={linkClass("misionvision")}>
             <FaEye /> Misión
           </li>
 
